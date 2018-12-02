@@ -11,7 +11,7 @@ bot.on('ready' , async () => {
         game: {
             name: 'v0.2',
             type: "STREAMING",
-            url: "put your twitch url here"
+            url: "place your twitch url here"
         }
     });
 })
@@ -32,7 +32,11 @@ bot.on('message', (message) => {
 });
 process.on('unhandledRejection', (r, p) => console.warn('UnhandledRejection: ', r, p))
 
-bot.login('place your bot token here');
+const config = require('./config.json');
+
+console.log(config.token);
+
+bot.login(config.token);
 
 
 //event listener to greet new guild members
