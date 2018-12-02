@@ -34,7 +34,7 @@ process.on('unhandledRejection', (r, p) => console.warn('UnhandledRejection: ', 
 
 const config = require('./config.json');
 
-console.log(config.token);
+console.log(`Logging in with Token: ${config.token}`);
 
 bot.login(config.token);
 
