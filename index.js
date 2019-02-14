@@ -9,9 +9,9 @@ bot.on('ready' , async () => {
     bot.user.setStatus('available')
     bot.user.setPresence({
         game: {
-            name: 'v0.2',
+            name: 'v0.03',
             type: "STREAMING",
-            url: "place your twitch url here"
+            url: "https://www.twitch.tv/haywirerain"
         }
     });
 })

@@ -15,19 +15,19 @@ module.exports.load = (bot) => {
           message.channel.startTyping();
             const embed = {
                 "title": "__Command List__",
-                "description": "Visit the bot's page on my website [here](http://www.rainsoftware.tk/downloads/Bots/ra1nb0t/) ",
+                "description": "Visit the bot's page on my website [here](http://old.rainsoftware.ml/downloads/Bots/ra1nb0t/) ",
                 "color": 3252442,
                 "footer": {
-                  "icon_url": "http://rainsoftware.tk/images/homepage/rlogo2.png",
-                  "text": "Rain#4769"
+                  "icon_url": "http://www.rainsoftware.ml/images/assets/rlogo2.png",
+                  "text": "Rain#2844"
                 },
                 "thumbnail": {
-                  "url": "http://rainsoftware.tk/images/rainbotassets/Avatar-opt1.png"
+                  "url": "http://old.rainsoftware.ml/images/rainbotassets/Avatar-opt1.png"
                 },
                 "author": {
                   "name": "RA1NB0T",
-                  "url": "http://www.rainsoftware.tk/downloads/Bots/ra1nb0t/",
-                  "icon_url": "http://rainsoftware.tk/images/rainbotassets/Avatar-opt1.png"
+                  "url": "http://old.rainsoftware.ml/downloads/Bots/ra1nb0t/",
+                  "icon_url": "http://old.rainsoftware.ml/images/rainbotassets/Avatar-opt1.png"
                 },
                 "fields": [
                   {
@@ -66,12 +66,12 @@ module.exports.load = (bot) => {
                 "description": "Pong! :ping_pong: ",
                 "color": 3252442,
                 "thumbnail": {
-                  "url": "http://rainsoftware.tk/images/rainbotassets/Avatar-opt1.png"
+                  "url": "http://old.rainsoftware.ml/images/rainbotassets/Avatar-opt1.png"
                 },
                 "author": {
                   "name": "RA1NB0T",
-                  "url": "http://www.rainsoftware.tk/downloads/Bots/ra1nb0t/",
-                  "icon_url": "http://rainsoftware.tk/images/rainbotassets/Avatar-opt1.png"
+                  "url": "http://old.rainsoftware.ml/downloads/Bots/ra1nb0t/",
+                  "icon_url": "http://old.rainsoftware.ml/images/rainbotassets/Avatar-opt1.png"
                 }
               };
               message.channel.send({ embed });
@@ -119,12 +119,12 @@ module.exports.load = (bot) => {
                 "description": "Hey! :smile: :wave:",
                 "color": 3252442,
                 "thumbnail": {
-                  "url": "http://rainsoftware.tk/images/rainbotassets/Avatar-opt1.png"
+                  "url": "http://old.rainsoftware.ml/images/rainbotassets/Avatar-opt1.png"
                 },
                 "author": {
                   "name": "RA1NB0T",
-                  "url": "http://www.rainsoftware.tk/downloads/Bots/ra1nb0t/",
-                  "icon_url": "http://rainsoftware.tk/images/rainbotassets/Avatar-opt1.png"
+                  "url": "http://old.rainsoftware.ml/downloads/Bots/ra1nb0t/",
+                  "icon_url": "http://old.rainsoftware.ml/images/rainbotassets/Avatar-opt1.png"
                 }
               };
               message.channel.send({ embed });
