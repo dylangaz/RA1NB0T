@@ -41,13 +41,11 @@ bot.login(config.token);
 
 //event listener to greet new guild members
 bot.on('guildMemberAdd', member => {
-    message.channel.startTyping();
     //sends welcome message to 'general'
     const channel = member.guild.channels.find(ch => ch.name === 'general');
     //if channel isn't found, return
     if(!channel) return;
     channel.send(`Welcome to **__${member.guild.name}__**, ${member}`);
-    message.channel.stopTyping();
 });
 
 //event listener to handle errors
