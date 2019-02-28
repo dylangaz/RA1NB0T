@@ -9,7 +9,9 @@ bot.on('ready' , async () => {
     bot.user.setStatus('available')
     bot.user.setPresence({
         game: {
-            name: 'v0.03',
+            name: 'v0.08',
+            //name: 'Down for maintenance',
+            //name: 'Updating...',
             type: "STREAMING",
             url: "https://www.twitch.tv/haywirerain"
         }
