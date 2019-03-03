@@ -123,7 +123,29 @@ module.exports.load = (bot) => {
         "channel": null,
         "execute": async (message, args) => {
           message.channel.startTyping()
-            message.channel.sendMessage('this command has not yet been implemented.')
+          loopActive = true;
+          while(loopActive)
+          {
+            n = Math.floor(Math.random() * 2);
+            console.log(n)
+            if(n==0)
+            {
+              message.channel.sendMessage("Heads")
+              loopActive = false;
+              break;
+            }
+            else if(n==1)
+            {
+              message.channel.sendMessage("Tails")
+              loopActive = false;
+              break;
+            }
+            else
+            {
+              loopActive = false;
+              break;
+            }
+          }
           message.channel.stopTyping()
         },
     }
