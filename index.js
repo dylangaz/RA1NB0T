@@ -22,7 +22,6 @@ require(`./commands`).load(bot);
 
 bot.on('message', (message) => {
     if (message.author.id === bot.user.id) return;
-    console.log(commands)
 
     const prefix = "+";
     if (!message.content.startsWith(prefix)) return;

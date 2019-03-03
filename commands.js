@@ -56,6 +56,14 @@ module.exports.load = (bot) => {
                   {
                     "name": "Shoot - `Become a Hitman!`",
                     "value": "```shoot <@user>```"
+                  },
+                  {
+                    "name": "Mute - `mutes a user.` **(Requires ADMINISTRATOR permission)**",
+                    "value": "```mute <@user>```"
+                  },
+                  {
+                    "name": "Unmute - `Unmutes a user.` **(Requires ADMINISTRATOR permission)**",
+                    "value": "```unmute <@user>```"
                   }
                 ]
               };
@@ -193,6 +201,44 @@ module.exports.load = (bot) => {
           break;
         }
         
+      },
+    }
+    //applies the 'muted' role to the specified user
+    commands.mute = {
+      "channel": null,
+      "execute": async (message, args) => {
+        const admin = message.channel.permissionsFor(message.member).has("ADMINISTRATOR", false);
+
+        const role = message.guild.roles.find(r => r.name === "Muted"); //you must have a role called 'Muted' on your discord guild
+
+        const user = message.mentions.members.first();
+        if(!admin)
+        {
+          message.channel.sendMessage('The `ADMINISTRATOR` permission is required to use this command.')
+          return;
+        } 
+        user.addRole(role).catch(console.error);
+        message.channel.sendMessage(`${user} has been muted.`)
+        console.log(`User ${user} has been muted`)
+      },
+    }
+     //removes the 'muted' role to the specified user
+     commands.unmute = {
+      "channel": null,
+      "execute": async (message, args) => {
+        const admin = message.channel.permissionsFor(message.member).has("ADMINISTRATOR", false);
+
+        const role = message.guild.roles.find(r => r.name === "Muted"); //you must have a role called 'Muted' on your discord guild
+
+        const user = message.mentions.members.first();
+        if(!admin)
+        {
+          message.channel.sendMessage('The `ADMINISTRATOR` permission is required to use this command.')
+          return;
+        } 
+        user.removeRole(role).catch(console.error);
+        message.channel.sendMessage(`${user} has been unmuted.`)
+        console.log(`User ${user} has been unmuted`)
       },
     }
 };
