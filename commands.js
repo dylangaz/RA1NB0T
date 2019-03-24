@@ -58,6 +58,10 @@ module.exports.load = (bot) => {
                     "value": "```shoot <@user>```"
                   },
                   {
+                    "name": "Russian Roulette - `Play Russian Roulette!`",
+                    "value": "```rr```"
+                  },
+                  {
                     "name": "Mute - `mutes a user.` **(Requires ADMINISTRATOR permission)**",
                     "value": "```mute <@user>```"
                   },
@@ -66,9 +70,9 @@ module.exports.load = (bot) => {
                     "value": "```unmute <@user>```"
                   },
                   {
-                    "name": "Russian Roulette - `Play Russian Roulette!`",
-                    "value": "```rr```"
-                  }
+                    "name": "Purge - `Deletes a specified number of messages. (Max 25)` **(Requires ADMINISTRATOR permission)**",
+                    "value": "```purge <number>```"
+                  },
                 ]
               };
               message.channel.send({ embed });
@@ -301,7 +305,13 @@ module.exports.load = (bot) => {
 
         if(!admin)
         {
-          message.channel.sendMessage('The `ADMINISTRATOR` permission is required to use this command.')
+          const embed = {
+            "title": ":x: Error!",
+            "description": "The `ADMINISTRATOR` permission is required to use this command.",
+            "color": 12199999,
+            "footer": {}
+          };
+          message.channel.send({ embed });
           return;
         } 
 
@@ -352,7 +362,13 @@ module.exports.load = (bot) => {
 
         if(!admin)
         {
-          message.channel.sendMessage('The `ADMINISTRATOR` permission is required to use this command.')
+          const embed = {
+            "title": ":x: Error!",
+            "description": "The `ADMINISTRATOR` permission is required to use this command.",
+            "color": 12199999,
+            "footer": {}
+          };
+          message.channel.send({ embed });
           return;
         } 
         user.removeRole(role).catch(console.error);
@@ -365,7 +381,6 @@ module.exports.load = (bot) => {
             "title": ":x: Error!",
             "description": `**${guildname}** does not have a role called 'Muted'!`,
             "color": 12199999,
-            //"timestamp": "2019-03-24T19:31:43.315Z",
             "footer": {}
           };
           message.channel.send({ embed });
@@ -376,7 +391,6 @@ module.exports.load = (bot) => {
             "title": ":x: Error!",
             "description": `${user} is not muted!`,
             "color": 12199999,
-            //"timestamp": "2019-03-24T19:31:43.315Z",
             "footer": {}
           };
           message.channel.send({ embed });
@@ -387,11 +401,47 @@ module.exports.load = (bot) => {
             "title": ":white_check_mark: Success!",
             "description": `${author} has unmuted ${user}!`,
             "color": 1233431,
-            //"timestamp": "2019-03-24T19:31:43.315Z",
             "footer": {}
           };
           message.channel.send({ embed });
         }
+      },
+    }
+    //deletes the specified number of messages (Maximum of 25 at a time)
+    commands.purge = {
+      "channel": null,
+      "execute": async (message, args) => {
+        const admin = message.channel.permissionsFor(message.member).has("ADMINISTRATOR", false);
+        const delCount = parseInt(args[0], 10);
+
+        if(!admin)
+        {
+          const embed = {
+            "title": ":x: Error!",
+            "description": "The `ADMINISTRATOR` permission is required to use this command.",
+            "color": 12199999,
+            "footer": {}
+          };
+          message.channel.send({ embed });
+          return;
+        } 
+
+        if(!delCount || delCount < 2 || delCount > 25)
+        return message.reply("Please provide a number between 2 and 25 for the number of messages to delete");
+
+        const fetched = await message.channel.fetchMessages({limit: (delCount +1)});
+        message.channel.bulkDelete(fetched)
+          .catch(error => message.reply(`Couldn't delete messages because of: ${error}`));
+
+          const embed = {
+            "title": ":white_check_mark: Success!",
+            "description": `${delCount} messages were deleted!`,
+            "color": 1233431,
+            "footer": {}
+          };
+          message.channel.send({ embed });
+
+        console.log(`User ${message.author.username} has deleted ${delCount} messages [!]`)
       },
     }
 };
