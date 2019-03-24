@@ -9,7 +9,7 @@ bot.on('ready' , async () => {
     bot.user.setStatus('available')
     bot.user.setPresence({
         game: {
-            name: 'v0.08',
+            name: 'v0.10',
             //name: 'Down for maintenance',
             //name: 'Updating...',
             type: "STREAMING",

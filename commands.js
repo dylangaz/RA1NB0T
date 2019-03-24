@@ -64,6 +64,10 @@ module.exports.load = (bot) => {
                   {
                     "name": "Unmute - `Unmutes a user.` **(Requires ADMINISTRATOR permission)**",
                     "value": "```unmute <@user>```"
+                  },
+                  {
+                    "name": "Russian Roulette - `Play Russian Roulette!`",
+                    "value": "```rr```"
                   }
                 ]
               };
@@ -112,7 +116,7 @@ module.exports.load = (bot) => {
         "execute": async (message, args) => {
           message.channel.startTyping()
             message.delete()
-            .then(msg => console.log(`Deleted message from ${msg.author.username}`))
+            .then(msg => console.log(`Deleted message from ${msg.author.username} (${message})`))
             .catch(console.error);
             message.channel.sendMessage(args.join(" "))
           message.channel.stopTyping()
@@ -198,7 +202,7 @@ module.exports.load = (bot) => {
           }
           else if(n==1)
           {
-            message.channel.sendMessage(`${message.author} takes a shot...`)
+            message.channel.sendMessage(`${message.author} takes their shot...`)
             message.channel.sendMessage(`The bullet ricochets off of a metal object and strikes ${message.author} right in the forehead!`, {files: ["./assets/shoot/1.gif"]});
             loopActive = false;
             break;
@@ -225,23 +229,115 @@ module.exports.load = (bot) => {
         
       },
     }
+    //plays russian roulette
+    commands.rr = {
+      "channel": null,
+      "execute": async (message, args) => {
+        var user = message.author
+        loopActive = true;
+        while(loopActive)
+        {
+          n = Math.floor(Math.random() * 6);
+          console.log(n)
+          if(n==0)
+          {
+            message.channel.sendMessage(`${message.author} places the muzzle against their head...`)
+            message.channel.sendMessage(`${message.author} Lives!`)
+            loopActive = false;
+            break;
+          }
+          else if(n==1)
+          {
+            message.channel.sendMessage(`${message.author} places the muzzle against their head...`)
+            message.channel.sendMessage(`${message.author} Lives!`)
+            loopActive = false;
+            break;
+          }
+          else if(n==2)
+          {
+            message.channel.sendMessage(`${message.author} places the muzzle against their head...`)
+            message.channel.sendMessage(`${message.author} Lives!`)
+            loopActive = false;
+            break;
+          }
+
+          else if(n==3)
+          {
+            message.channel.sendMessage(`${message.author} places the muzzle against their head...`)
+            message.channel.sendMessage(`${message.author} Lives!`)
+            loopActive = false;
+            break;
+          }
+          else if(n==4)
+          {
+            message.channel.sendMessage(`${message.author} places the muzzle against their head...`)
+            message.channel.sendMessage(`${message.author} Lives!`)
+            loopActive = false;
+            break;
+          }
+          else if(n==5)
+          {
+            message.channel.sendMessage(`${message.author} places the muzzle against their head...`)
+            message.channel.sendMessage(`* Gunshot *`)
+            message.channel.sendMessage(`${message.author} Dies.`)
+            loopActive = false;
+            break;
+          }
+          else
+            loopActive = false;
+            break;
+        }
+      },
+    }
     //applies the 'muted' role to the specified user
     commands.mute = {
       "channel": null,
       "execute": async (message, args) => {
         const admin = message.channel.permissionsFor(message.member).has("ADMINISTRATOR", false);
-
         const role = message.guild.roles.find(r => r.name === "Muted"); //you must have a role called 'Muted' on your discord guild
-
+        const author = message.author
         const user = message.mentions.members.first();
+        const guildname = message.guild
+
         if(!admin)
         {
           message.channel.sendMessage('The `ADMINISTRATOR` permission is required to use this command.')
           return;
         } 
+
         user.addRole(role).catch(console.error);
-        message.channel.sendMessage(`${user} has been muted.`)
         console.log(`User ${user} has been muted`)
+        
+        if(!message.guild.roles.find(role => role.name === "Muted"))
+        {
+          const embed = {
+            "title": ":x: Error!",
+            "description": `**${guildname}** does not have a role called 'Muted'!`,
+            "color": 12199999,
+            "footer": {}
+          };
+          message.channel.send({ embed });
+        }
+        else if(user.roles.find(r => r.name === "Muted"))
+        {
+          const embed = {
+            "title": ":x: Error!",
+            "description": `${user} is already muted!`,
+            "color": 12199999,
+            "footer": {}
+          };
+          message.channel.send({ embed });
+        }
+        else
+        {
+          const embed = {
+            "title": ":white_check_mark: Success!",
+            "description": `${author} has muted ${user}!`,
+            "color": 1233431,
+            "footer": {}
+          };
+          message.channel.send({ embed });
+        }
       },
     }
      //removes the 'muted' role to the specified user
@@ -249,18 +345,53 @@ module.exports.load = (bot) => {
       "channel": null,
       "execute": async (message, args) => {
         const admin = message.channel.permissionsFor(message.member).has("ADMINISTRATOR", false);
-
         const role = message.guild.roles.find(r => r.name === "Muted"); //you must have a role called 'Muted' on your discord guild
-
+        const author = message.author
         const user = message.mentions.members.first();
+        const guildname = message.guild
+
         if(!admin)
         {
           message.channel.sendMessage('The `ADMINISTRATOR` permission is required to use this command.')
           return;
         } 
         user.removeRole(role).catch(console.error);
-        message.channel.sendMessage(`${user} has been unmuted.`)
+
         console.log(`User ${user} has been unmuted`)
+        
+        if(!message.guild.roles.find(role => role.name === "Muted"))
+        {
+          const embed = {
+            "title": ":x: Error!",
+            "description": `**${guildname}** does not have a role called 'Muted'!`,
+            "color": 12199999,
+            //"timestamp": "2019-03-24T19:31:43.315Z",
+            "footer": {}
+          };
+          message.channel.send({ embed });
+        }
+        else if(!user.roles.find(r => r.name === "Muted"))
+        {
+          const embed = {
+            "title": ":x: Error!",
+            "description": `${user} is not muted!`,
+            "color": 12199999,
+            //"timestamp": "2019-03-24T19:31:43.315Z",
+            "footer": {}
+          };
+          message.channel.send({ embed });
+        }
+        else
+        {
+          const embed = {
+            "title": ":white_check_mark: Success!",
+            "description": `${author} has unmuted ${user}!`,
+            "color": 1233431,
+            //"timestamp": "2019-03-24T19:31:43.315Z",
+            "footer": {}
+          };
+          message.channel.send({ embed });
+        }
       },
     }
 };
