@@ -1,21 +1,13 @@
 //Main Module for RA1NB0T
-
 //console.log("Bot running");
 const Discord = require('discord.js');
 const bot = new Discord.Client();
+const config = require('./config.json');
 
 bot.on('ready' , async () => {
     console.log(`Logged in as ${bot.user.username}`)
     bot.user.setStatus('available')
-    bot.user.setPresence({
-        game: {
-            name: 'v0.10',
-            //name: 'Down for maintenance',
-            //name: 'Updating...',
-            type: "STREAMING",
-            url: "https://www.twitch.tv/haywirerain"
-        }
-    });
+    bot.user.setPresence(config.defaultPresence);
 })
 commands = {};
 require(`./commands`).load(bot);
@@ -32,10 +24,6 @@ bot.on('message', (message) => {
     }
 });
 process.on('unhandledRejection', (r, p) => console.warn('UnhandledRejection: ', r, p))
-
-const config = require('./config.json');
-
-console.log(`Logging in with Token: ${config.token}`);
 
 bot.login(config.token);
 

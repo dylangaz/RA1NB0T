@@ -1,4 +1,5 @@
 //Commands Module for RA1NB0T
+const config = require("./config")
 module.exports.load = (bot) => {
   //test command
     commands.test = {
@@ -11,6 +12,7 @@ module.exports.load = (bot) => {
     commands.help = {
         "channel": null,
         "execute": async (message, args) => {
+          var author =  message.author
           message.channel.startTyping()
             const embed = {
                 "title": "__Command List__",
@@ -39,7 +41,7 @@ module.exports.load = (bot) => {
                   },
                   {
                     "name": "Say - `Allows the user to make the bot swear`:smiling_imp:",
-                    "value": "```say <message>```"
+                    "value": '```say <"message">```'
                   },
                   {
                     "name": "Hello - `Provides a rad greeting`",
@@ -73,9 +75,14 @@ module.exports.load = (bot) => {
                     "name": "Purge - `Deletes a specified number of messages. (Max 25)` **(Requires ADMINISTRATOR permission)**",
                     "value": "```purge <number>```"
                   },
+                  {
+                    "name": "SetPresence - `Sets the bot's status` **(Requires ADMINISTRATOR permission)**",
+                    "value": '```setpresence <PLAYING/STREAMING/LISTENING/WATCHING/reset> <"status"> ```'
+                  },
                 ]
               };
-              message.channel.send({ embed });
+              message.author.send({ embed });
+              message.channel.send(`${author}, I sent the command list to your DMs! :mailbox_with_mail: `);
           message.channel.stopTyping()
         },
     }
@@ -246,6 +253,7 @@ module.exports.load = (bot) => {
           if(n==0)
           {
             message.channel.sendMessage(`${message.author} places the muzzle against their head...`)
+            message.channel.sendMessage(`* Click *`)
             message.channel.sendMessage(`${message.author} Lives!`)
             loopActive = false;
             break;
@@ -253,6 +261,7 @@ module.exports.load = (bot) => {
           else if(n==1)
           {
             message.channel.sendMessage(`${message.author} places the muzzle against their head...`)
+            message.channel.sendMessage(`* Click *`)
             message.channel.sendMessage(`${message.author} Lives!`)
             loopActive = false;
             break;
@@ -260,6 +269,7 @@ module.exports.load = (bot) => {
           else if(n==2)
           {
             message.channel.sendMessage(`${message.author} places the muzzle against their head...`)
+            message.channel.sendMessage(`* Click *`)
             message.channel.sendMessage(`${message.author} Lives!`)
             loopActive = false;
             break;
@@ -268,6 +278,7 @@ module.exports.load = (bot) => {
           else if(n==3)
           {
             message.channel.sendMessage(`${message.author} places the muzzle against their head...`)
+            message.channel.sendMessage(`* Click *`)
             message.channel.sendMessage(`${message.author} Lives!`)
             loopActive = false;
             break;
@@ -275,6 +286,7 @@ module.exports.load = (bot) => {
           else if(n==4)
           {
             message.channel.sendMessage(`${message.author} places the muzzle against their head...`)
+            message.channel.sendMessage(`* Click *`)
             message.channel.sendMessage(`${message.author} Lives!`)
             loopActive = false;
             break;
@@ -293,6 +305,23 @@ module.exports.load = (bot) => {
         }
       },
     }
+    /*
+    ***UNFINISHED***
+
+     //rolls an 'x' sided die
+     commands.roll = {
+      "channel": null,
+      "execute": async (message, args) => {
+        var author = message.author
+        var x = parseInt(message,10)
+        n = Math.floor(Math.random() * x);
+        console.log(n)
+        message.channel.sendMessage(n)
+        
+      },
+    }
+    */
+
     //applies the 'muted' role to the specified user
     commands.mute = {
       "channel": null,
@@ -442,6 +471,103 @@ module.exports.load = (bot) => {
           message.channel.send({ embed });
 
         console.log(`User ${message.author.username} has deleted ${delCount} messages [!]`)
+      },
+    }
+    //sets bot presence
+    // PLAYING, STREAMING, LISTENING, WATCHING
+    commands.setpresence = {
+      "channel": null,
+      "execute": async (message, args) => {
+        const admin = message.channel.permissionsFor(message.member).has("ADMINISTRATOR", false);
+        const author = message.author
+        const user = message.mentions.members.first();
+        const guildname = message.guild
+
+        if(!admin)
+        {
+          const embed = {
+            "title": ":x: Error!",
+            "description": "The `ADMINISTRATOR` permission is required to use this command.",
+            "color": 12199999,
+            "footer": {}
+          };
+          message.channel.send({ embed });
+          return;
+        } 
+
+        args = message.content.trim().split(/ +/g);
+        const command = args.shift().toLowerCase();
+        let arg1 = args[0].toLowerCase();;
+        let arg2 = args.slice(1).join(" ");
+        console.log(args)
+        console.log(`${author.username} has changed my presence! ${args}`)
+        
+        if(arg1 == "playing")
+        {
+          bot.user.setActivity(arg2, {type: "PLAYING"})
+          const embed = {
+            "title": ":white_check_mark: Success!",
+            "description": `${author} has changed my presence to ` + "`PLAYING` " + `"**${arg2}**"!`,
+            "color": 1233431,
+            "footer": {}
+          };
+          message.channel.send({ embed });
+        }
+        else if(arg1 == "streaming")
+        {
+          bot.user.setActivity(arg2, {type: "STREAMING", url: "https://www.twitch.tv/haywirerain"})
+          const embed = {
+            "title": ":white_check_mark: Success!",
+            "description": `${author} has changed my presence to ` + "`STREAMING` " + `"**${arg2}**"!`,
+            "color": 1233431,
+            "footer": {}
+          };
+          message.channel.send({ embed });
+        }
+        else if(arg1 == "listening")
+        {
+          bot.user.setActivity(arg2, {type: "LISTENING"})
+          const embed = {
+            "title": ":white_check_mark: Success!",
+            "description": `${author} has changed my presence to ` + "`LISTENING` " + `"**${arg2}**"!`,
+            "color": 1233431,
+            "footer": {}
+          };
+          message.channel.send({ embed });
+        }
+        else if(arg1 == "watching")
+        {
+          bot.user.setActivity(arg2, {type: "WATCHING"})
+          const embed = {
+            "title": ":white_check_mark: Success!",
+            "description": `${author} has changed my presence to ` + "`WATCHING` " + `"**${arg2}**"!`,
+            "color": 1233431,
+            "footer": {}
+          };
+          message.channel.send({ embed });
+        }
+        else if(arg1 == "reset")
+        {
+          bot.user.setPresence(config.defaultPresence)
+          const embed = {
+            "title": ":white_check_mark: Success!",
+            "description": `${author} has reset my presence!`,
+            "color": 1233431,
+            "footer": {}
+          };
+          message.channel.send({ embed });
+          console.log(config.defaultPresence)
+        }
+        else
+        {
+          const embed = {
+            "title": ":x: Error!",
+            "description": `Please use 'playing, watching, listening, streaming, or reset`,
+            "color": 12199999,
+            "footer": {}
+          };
+          message.channel.send({ embed });
+        }
       },
     }
 };
