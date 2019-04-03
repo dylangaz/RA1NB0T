@@ -2,7 +2,7 @@
     "token":"",
     "defaultPresence": {
         "game": {
-            "name": "v0.9.0",
+            "name": "v0.9.1",
             "type": "PLAYING",
             "url": ""
         }

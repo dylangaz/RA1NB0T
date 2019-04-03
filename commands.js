@@ -76,7 +76,7 @@ module.exports.load = (bot) => {
                     "value": "```purge <number>```"
                   },
                   {
-                    "name": "SetPresence - `Sets the bot's status` **(Requires ADMINISTRATOR permission)**",
+                    "name": "SetPresence - `Sets the bot's status` **(Restricted!)**",
                     "value": '```setpresence <PLAYING/STREAMING/LISTENING/WATCHING/reset> <"status"> ```'
                   },
                 ]
@@ -483,11 +483,12 @@ module.exports.load = (bot) => {
         const user = message.mentions.members.first();
         const guildname = message.guild
 
-        if(!admin)
+        // !!! Change the ID here if you would like to lock the command to your Discord ID. If you don't change this ID, or remove this if statement entirely, the command won't work!
+        if (message.author.id !== '105764405727260672')
         {
           const embed = {
             "title": ":x: Error!",
-            "description": "The `ADMINISTRATOR` permission is required to use this command.",
+            "description": "This command is restricted!",
             "color": 12199999,
             "footer": {}
           };
