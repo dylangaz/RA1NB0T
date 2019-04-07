@@ -80,6 +80,10 @@ module.exports.load = (bot) => {
                     "value": "```update```"
                   },
                   {
+                    "name": "Guilds - `Lists the guilds that the bot is in.`",
+                    "value": "```guilds```"
+                  },
+                  {
                     "name": "Mute - `mutes a user.` **(Requires ADMINISTRATOR permission)**",
                     "value": "```mute <@user>```"
                   },
@@ -633,6 +637,18 @@ module.exports.load = (bot) => {
       };
       message.channel.send({ embed });
       
+    },
+  }
+  //Lists how many guilds the bot is in
+  commands.guilds = {
+    "channel": null,
+    "execute": async (message, args) => {
+      let msgBuilder = "";
+      message.channel.send(`I am active in ${bot.guilds.size} guilds.`);  
+      bot.guilds.forEach(element => {
+        msgBuilder = msgBuilder + `\n` + `-${element}`
+      });
+      message.channel.sendMessage(msgBuilder);
     },
   }
   //Embeds the most recent bot update video in chat
