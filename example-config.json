@@ -2,9 +2,12 @@
     "token":"",
     "defaultPresence": {
         "game": {
-            "name": "v0.9.1",
+            "name": "v1.0.0",
             "type": "PLAYING",
             "url": ""
         }
-    }
+    },
+    "clientID":"",
+    "botPerms":"",
+    "update":""
 }
