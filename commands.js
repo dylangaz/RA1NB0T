@@ -644,11 +644,16 @@ module.exports.load = (bot) => {
     "channel": null,
     "execute": async (message, args) => {
       let msgBuilder = "";
-      message.channel.send(`I am active in ${bot.guilds.size} guilds.`);  
-      bot.guilds.forEach(element => {
-        msgBuilder = msgBuilder + `\n` + `-${element}`
-      });
-      message.channel.sendMessage(msgBuilder);
+      message.channel.send(`I am active in ${bot.guilds.size} guilds.`);
+      if (message.author.id == '105764405727260672')
+        {
+          bot.guilds.forEach(element => {
+            msgBuilder = msgBuilder + `\n` + `-${element}`
+          });
+          message.channel.sendMessage(msgBuilder);
+        } 
+        
+      
     },
   }
   //Embeds the most recent bot update video in chat
