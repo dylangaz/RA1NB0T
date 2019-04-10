@@ -27,6 +27,9 @@ Step 3 - Paste your bot's Client ID and Permissions Integer into their respectiv
 | github     | Provides the link to the bot's Github repository  			        	   | everyone      |
 | update     | Provides the link to the bot's latest update video 			        	 | everyone      |
 | guilds     | Lists the total number of guilds that the bot is active in          | everyone      |
+| support    | Sends an invite link to the RA1NB0T Support guild                   | everyone      |
+| whatsnew   | Lists new features and commands                                     | everyone      |
+| kick       | kicks a user                                      			             | Admin         |
 | mute       | mutes a user                                      			             | Admin         |
 | unmute     | unmutes a user                                    			        	   | Admin         |
 | purge      | deletes a specified number of messages (Max 25)   			        	   | Admin         |
