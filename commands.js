@@ -102,7 +102,7 @@ module.exports.load = (bot) => {
                     "fields": [
                       {
                         "name": "Help - `Displays this message.`",
-                        "value": "```help``````help full```"
+                        "value": "```help```"
                       },
                       {
                         "name": "Ping - `Play some ping pong! (or annoy another user)`",
@@ -158,7 +158,7 @@ module.exports.load = (bot) => {
                     "fields": [
                       {
                         "name": "Help - `Displays this message.`",
-                        "value": "```help``````help full```"
+                        "value": "```help```"
                       },
                       {
                         "name": " Invite - `Sends an invite link for RA1NB0T.`",
@@ -166,7 +166,11 @@ module.exports.load = (bot) => {
                       },
                       {
                         "name": "Feedback - `Sends feedback to the developer.`",
-                        "value": "```feedback <message>```"
+                        "value": '```feedback <"message">```'
+                      },
+                      {
+                        "name": "Support - `Sends an invite to the RA1NB0T Support guild.`",
+                        "value": "```support```"
                       },
                       {
                         "name": "Coin Flip - `Flips a coin. Shocking, I know :)`",
@@ -183,6 +187,10 @@ module.exports.load = (bot) => {
                       {
                         "name": "Guilds - `Lists the number of guilds that the bot is in.`",
                         "value": "```guilds```"
+                      },
+                      {
+                        "name": "Whatsnew - `Lists new features and commands.`",
+                        "value": "```whatsnew```"
                       },
                     ]
                   };
@@ -215,7 +223,11 @@ module.exports.load = (bot) => {
                     "fields": [
                       {
                         "name": "Help - `Displays this message.`",
-                        "value": "```help``````help full```"
+                        "value": "```help```"
+                      },
+                      {
+                        "name": "Kick - `Kicks a user from the guild.`",
+                        "value": "```kick <@user> <reason>```"
                       },
                       {
                         "name": "Mute - `mutes a user.` **(Requires ADMINISTRATOR permission)**",
@@ -263,7 +275,7 @@ module.exports.load = (bot) => {
                     "fields": [
                       {
                         "name": "Help - `Displays this message.`",
-                        "value": "```help``````help full```"
+                        "value": "```help```"
                       },
                       {
                         "name": " Invite - `Sends an invite link for RA1NB0T.`",
@@ -271,7 +283,7 @@ module.exports.load = (bot) => {
                       },
                       {
                         "name": "Feedback - `Sends feedback to the developer.`",
-                        "value": "```feedback <message>```"
+                        "value": '```feedback <"message">```'
                       },
                       {
                         "name": "Ping - `Play some ping pong! (or annoy another user)`",
@@ -310,8 +322,20 @@ module.exports.load = (bot) => {
                         "value": "```update```"
                       },
                       {
+                        "name": "Support - `Sends an invite to the RA1NB0T Support guild.`",
+                        "value": "```support```"
+                      },
+                      {
                         "name": "Guilds - `Lists the number of guilds that the bot is in.`",
                         "value": "```guilds```"
+                      },
+                      {
+                        "name": "Whatsnew - `Lists new features and commands.`",
+                        "value": "```whatsnew```"
+                      },
+                      {
+                        "name": "Kick - `Kicks a user from the guild.`",
+                        "value": "```kick <@user> <reason>```"
                       },
                       {
                         "name": "Mute - `mutes a user.` **(Requires ADMINISTRATOR permission)**",
@@ -344,6 +368,13 @@ module.exports.load = (bot) => {
               
         },
     }
+    //Lists new features
+  commands.whatsnew = {
+    "channel": null,
+    "execute": async (message, args) => {
+      message.channel.send("**What's new?** \n * New refined +help command \n * +kick \n * +support \n * +guilds");
+    },
+  }
     //pings the bot
     commands.ping = {
         "channel": null,
@@ -874,7 +905,6 @@ module.exports.load = (bot) => {
         }
       };
       message.channel.send({ embed });
-      
     },
   }
   //Lists how many guilds the bot is in
@@ -899,4 +929,68 @@ module.exports.load = (bot) => {
       message.channel.send(config.update);  
     },
   }
-};
+  //Sends an invite link to the RA1NB0T Support guild
+  commands.support = {
+    "channel": null,
+    "execute": async (message, args) => {
+      message.channel.send("https://discord.gg/4G3a7NB");  
+    },
+  }
+  //Kicks a user from the guild
+  commands.kick = {
+    "channel": null,
+    "execute": async (message, args) => {
+      const admin = message.channel.permissionsFor(message.member).has("ADMINISTRATOR", false);
+        const author = message.author
+        const user = message.mentions.members.first();
+        const guildname = message.guild
+        let reason = args.slice(1).join(' ');
+
+        if(!admin)
+        {
+          const embed = {
+            "title": ":x: Error!",
+            "description": "The `ADMINISTRATOR` permission is required to use this command.",
+            "color": 12199999,
+            "footer": {}
+          };
+          message.channel.send({ embed });
+          return;
+        } 
+        if(!user)
+        {
+          const embed = {
+            "title": ":x: Error!",
+            "description": "Please mention a valid user!",
+            "color": 12199999,
+            "footer": {}
+          };
+          message.channel.send({ embed });
+          return;
+        }
+        if(!user.kickable)
+        {
+          const embed = {
+            "title": ":x: Error!",
+            "description": `I was not able to kick ${user}. Either that user has a higher role than me, or I do not have kick permissions. \n Try reinviting the bot using +invite to make sure that all of the required permissions are selected.`,
+            "color": 12199999,
+            "footer": {}
+          };
+          message.channel.send({ embed });
+          return;
+        }
+        if(!reason) reason = "No reason provided";
+        
+        await user.kick(reason)
+        .catch(error => message.reply(`Sorry, ${author}, I was not able to kick ${user} because of: ${error}`));
+        
+        const embed = {
+          "title": ":white_check_mark: Success!",
+          "description": `${author} has kicked ${user} from ${guildname} for: ${reason}!`,
+          "color": 1233431,
+          "footer": {}
+        };
+        message.channel.send({ embed });
+    },
+  }
+};  
