@@ -991,7 +991,6 @@ module.exports.load = (bot) => {
           "footer": {}
         };
         message.channel.send({ embed });
-        bot.channels.get('565695860424572928').send(`User: ${user} (id: ${user.id}) kicked from Guild: **${guildname}** (id: ${guildname.id}). For Reason: ${reason} \n This guild has ${guildname.memberCount} members!`);
     },
   }
 };  
