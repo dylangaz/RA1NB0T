@@ -192,6 +192,14 @@ module.exports.load = (bot) => {
                         "name": "Whatsnew - `Lists new features and commands.`",
                         "value": "```whatsnew```"
                       },
+                      {
+                        "name": "Userinfo - `Lists information about the chosen user.`",
+                        "value": "```userinfo <@user>```"
+                      },
+                      {
+                        "name": "Serverinfo - `Lists information about the current guild.`",
+                        "value": "```serverinfo```"
+                      },
                     ]
                   };
                   message.channel.send({ embed });
@@ -226,7 +234,7 @@ module.exports.load = (bot) => {
                         "value": "```help```"
                       },
                       {
-                        "name": "Kick - `Kicks a user from the guild.`",
+                        "name": "Kick - `Kicks a user from the guild.` **(Requires ADMINISTRATOR permission)**",
                         "value": "```kick <@user> <reason>```"
                       },
                       {
@@ -334,7 +342,15 @@ module.exports.load = (bot) => {
                         "value": "```whatsnew```"
                       },
                       {
-                        "name": "Kick - `Kicks a user from the guild.`",
+                        "name": "Userinfo - `Lists information about the chosen user.`",
+                        "value": "```userinfo <@user>```"
+                      },
+                      {
+                        "name": "Serverinfo - `Lists information about the current guild.`",
+                        "value": "```serverinfo```"
+                      },
+                      {
+                        "name": "Kick - `Kicks a user from the guild.` **(Requires ADMINISTRATOR permission)**",
                         "value": "```kick <@user> <reason>```"
                       },
                       {
@@ -372,7 +388,7 @@ module.exports.load = (bot) => {
   commands.whatsnew = {
     "channel": null,
     "execute": async (message, args) => {
-      message.channel.send("**What's new?** \n * New refined +help command \n * +kick \n * +support \n * +guilds");
+      message.channel.send("**What's new?** \n * +userinfo \n * +serverinfo");
     },
   }
     //pings the bot
@@ -991,6 +1007,133 @@ module.exports.load = (bot) => {
           "footer": {}
         };
         message.channel.send({ embed });
+    },
+  }
+  //Sends info on the selected user
+  commands.userinfo = {
+    "channel": null,
+    "execute": async (message, args) => {
+      var user = message.mentions.users.first() || message.author
+			var member = message.guild.members.get(user.id)
+      var vcchannel = member.voiceChannel ? member.voiceChannel.name : "No Voice Channel"
+      
+      const embed = {
+        "title": "__User Info__",
+        "description": "Visit the bot's page on my website [here](http://old.rainsoftware.ml/downloads/Bots/ra1nb0t/) ",
+        "color": 4507862,
+        "footer": {
+          "icon_url": "https://lh3.googleusercontent.com/kQmKjglSvITkgl06nuGdJb9bDMrQ7WCCguUNV6cStIXmpK3cGLrMKqbAHyxOXrYaqi2J83cni7tjI01xg7VpqIsu-676JNWywZHNZ6f62ml7bbtn8bRWqa1OQDZS_THx3yXJ8Ewz62rEnWoxd8JlYi0qjuR7GYo5pxjc-s1TUdAc6_22VDSB12aZTcbK9ViKJc0Ff_EVP2JKEHbcASMtCHABnjz2bFa4JiPBNjKPQ7eXKiP_Uvt8sTh-srbsxZQjdMPy4DlMNYB1_pfvEcyqI0uyRHwS-rPQnveqRjjqnrbST4GQXEHNFjHfESNsAGkVzVe_m2ldkStgqCgxt-svbj2syr4XEQvD8eTYdKLZKN4-c6Nj15r4EgmPpvwXL8YgPTJMIeu5MoTbWxIlEjQLHzgYG2Qvvc2bvvftCjWBLB9KqdaBzIlmsubiRDroCZwWxfB4T9j_C2GEkeG4ym6MdL8cJoW7vI9YiD1uo3WIb8fIWfYe6V7FXq10Zep9LShXq7judS0U68q1ZLx47L4oG4XeBLSYn0EsNvAx2JxSvbuytUdGUCzWv57Vz9f5AlcufA2KcbxRvcQc86Tr1uvGmhtfuaRipL0k8yfMrYrbwT2obfXuLcoXx9WTJk6cYLVJU1OcgiIQYUcJvYHKnsaGy_qbqw7bKR4=s300-no",
+          "text": "Rain#2844"
+        },
+        "thumbnail": {
+          "url": user.displayAvatarURL
+        },
+        "author": {
+          "name": "RA1NB0T",
+          "url": "http://old.rainsoftware.ml/downloads/Bots/ra1nb0t/",
+          "icon_url": "https://lh3.googleusercontent.com/CpiTKMSx-or-pSgUYvyNZ1FeJ22BqJDT-MtaYr93jUOR2hGplPqrsD3o1BIUMamxlJyr9uyiwEaDzGfmR7txSGdR2uUt68-NHSS7GGZHMxjK8jLgsCD7Ew9_bvEiTM9B5MYo2Vct-h8pUAP-hrQQkTUo1P8yRJNi6yD3wkqpvxO059EzT9afrCcTUitWk65nEdrAroufQJ0p0nksLZsSjYjeVDtp_Jw7eo8CZRkOYQHTxInSfvqjhv5W61MKoBAZ2ZyylK_zMK5LaSx5HuKT92Oigd03DjC_ZGGzLn0I3A-p3e9-Kjlamf3L3Eqvf6hbHj_Mi940s-sUB69ElmrEIB1j1kNHS2fwUKWeQiN_7LOfmNkbzBQdMwm1WcMf9YBoXVjjeOnQ4kHXt_3V_Ed5tmhvkN-jUCEzj0iNKexOTM_EQ2mMec9iIs03ynF8-TcovCBz5NFQttkBuAN4jlnDvuH3Vt5Oww2CzSK-NTJO3JRXbde8RUQufX5K3GK7Sj2SfhSzV2DP4nKMiwCosfw-q0Emk__NMwB4Q6N_8hHYKgEzi-SZyBNKTGw6Px8PL9-Qa76ZOHZ8vHMfD5oSVYUBR-f_huO92cMbFTYIodNeT4oa1PUjZux6ObhQy-nMKZBPWSLcp0P1yo-rM9jI45Da8R21vS8wbue33QUrferv5tZWewtT58MaDrv6XEGrl42f3JoKJgbEUumKKV_H_SugxW13=s164-no"
+        },
+        "fields": [
+          {
+            "name": "User",
+            "value": user.tag,
+            inline: true
+          },
+          {
+            "name": "ID",
+            "value": user.id,
+            inline: true
+          },
+          {
+            "name": "Status",
+            "value": user.presence.status,
+            inline: true
+          },
+          {
+            "name": "Presence",
+            "value": user.presence.game ? user.presence.game.name : "n/a",
+            inline: true
+          },
+          {
+            "name": "Account Creation Date",
+            "value": user.createdAt,
+            inline: true
+          },
+          {
+            "name": "Guild Join Date",
+            "value": member.joinedAt,
+            inline: true
+          },
+        ]
+      };
+      message.channel.send({ embed });
+    },
+  }
+  //Sends info on the current guild
+  commands.serverinfo = {
+    "channel": null,
+    "execute": async (message, args) => {
+      var server = message.guild
+      var roles = []
+			server.roles.reduce((snowflake, role) => {
+				if (role.id == role.guild.id) return; // filters out @everyone
+				roles.push(role.name);
+      }, []);
+      var channels = []
+			server.channels.reduce((snowflake, channel) => {
+				channels.push(channel.name);
+      }, []);
+      
+      const embed = {
+        "title": "__Server Info__",
+        "description": "Visit the bot's page on my website [here](http://old.rainsoftware.ml/downloads/Bots/ra1nb0t/) ",
+        "color": 4507862,
+        "footer": {
+          "icon_url": "https://lh3.googleusercontent.com/kQmKjglSvITkgl06nuGdJb9bDMrQ7WCCguUNV6cStIXmpK3cGLrMKqbAHyxOXrYaqi2J83cni7tjI01xg7VpqIsu-676JNWywZHNZ6f62ml7bbtn8bRWqa1OQDZS_THx3yXJ8Ewz62rEnWoxd8JlYi0qjuR7GYo5pxjc-s1TUdAc6_22VDSB12aZTcbK9ViKJc0Ff_EVP2JKEHbcASMtCHABnjz2bFa4JiPBNjKPQ7eXKiP_Uvt8sTh-srbsxZQjdMPy4DlMNYB1_pfvEcyqI0uyRHwS-rPQnveqRjjqnrbST4GQXEHNFjHfESNsAGkVzVe_m2ldkStgqCgxt-svbj2syr4XEQvD8eTYdKLZKN4-c6Nj15r4EgmPpvwXL8YgPTJMIeu5MoTbWxIlEjQLHzgYG2Qvvc2bvvftCjWBLB9KqdaBzIlmsubiRDroCZwWxfB4T9j_C2GEkeG4ym6MdL8cJoW7vI9YiD1uo3WIb8fIWfYe6V7FXq10Zep9LShXq7judS0U68q1ZLx47L4oG4XeBLSYn0EsNvAx2JxSvbuytUdGUCzWv57Vz9f5AlcufA2KcbxRvcQc86Tr1uvGmhtfuaRipL0k8yfMrYrbwT2obfXuLcoXx9WTJk6cYLVJU1OcgiIQYUcJvYHKnsaGy_qbqw7bKR4=s300-no",
+          "text": "Rain#2844"
+        },
+        "thumbnail": {
+          "url": server.iconURL
+        },
+        "author": {
+          "name": "RA1NB0T",
+          "url": "http://old.rainsoftware.ml/downloads/Bots/ra1nb0t/",
+          "icon_url": "https://lh3.googleusercontent.com/CpiTKMSx-or-pSgUYvyNZ1FeJ22BqJDT-MtaYr93jUOR2hGplPqrsD3o1BIUMamxlJyr9uyiwEaDzGfmR7txSGdR2uUt68-NHSS7GGZHMxjK8jLgsCD7Ew9_bvEiTM9B5MYo2Vct-h8pUAP-hrQQkTUo1P8yRJNi6yD3wkqpvxO059EzT9afrCcTUitWk65nEdrAroufQJ0p0nksLZsSjYjeVDtp_Jw7eo8CZRkOYQHTxInSfvqjhv5W61MKoBAZ2ZyylK_zMK5LaSx5HuKT92Oigd03DjC_ZGGzLn0I3A-p3e9-Kjlamf3L3Eqvf6hbHj_Mi940s-sUB69ElmrEIB1j1kNHS2fwUKWeQiN_7LOfmNkbzBQdMwm1WcMf9YBoXVjjeOnQ4kHXt_3V_Ed5tmhvkN-jUCEzj0iNKexOTM_EQ2mMec9iIs03ynF8-TcovCBz5NFQttkBuAN4jlnDvuH3Vt5Oww2CzSK-NTJO3JRXbde8RUQufX5K3GK7Sj2SfhSzV2DP4nKMiwCosfw-q0Emk__NMwB4Q6N_8hHYKgEzi-SZyBNKTGw6Px8PL9-Qa76ZOHZ8vHMfD5oSVYUBR-f_huO92cMbFTYIodNeT4oa1PUjZux6ObhQy-nMKZBPWSLcp0P1yo-rM9jI45Da8R21vS8wbue33QUrferv5tZWewtT58MaDrv6XEGrl42f3JoKJgbEUumKKV_H_SugxW13=s164-no"
+        },
+        "fields": [
+          {
+            "name": "Guild Name",
+            "value": `${server.name}`,
+            inline: true
+          },
+          {
+            "name": "Total Members",
+            "value": `${server.memberCount}`,
+            inline: true
+          },
+          {
+            "name": "Guild Owner",
+            "value": `${server.owner}`,
+            inline: true
+          },
+          {
+            "name": "Total Roles",
+            "value": `${roles.length}`,
+            inline: true
+          },
+          {
+            "name": "Server ID",
+            "value": `${server.id}`,
+            inline: true
+          },
+          {
+            "name": "Total Channels",
+            "value": `${channels.length}`,
+            inline: true
+          },
+        ]
+      };
+      message.channel.send({ embed });
     },
   }
 };  
