@@ -29,6 +29,8 @@ Step 3 - Paste your bot's Client ID and Permissions Integer into their respectiv
 | guilds     | Lists the total number of guilds that the bot is active in          | everyone      |
 | support    | Sends an invite link to the RA1NB0T Support guild                   | everyone      |
 | whatsnew   | Lists new features and commands                                     | everyone      |
+| userinfo   | Lists information about the selected user                           | everyone      |
+| serverinfo | Lists information about the current guild                           | everyone      |
 | kick       | kicks a user                                      			             | Admin         |
 | mute       | mutes a user                                      			             | Admin         |
 | unmute     | unmutes a user                                    			        	   | Admin         |
