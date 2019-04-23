@@ -1,5 +1,9 @@
 //Commands Module for RA1NB0T
-const config = require("./config")
+const Discord = require('discord.js');
+const config = require("./config");
+const fetch = require('node-fetch');
+const querystring = require('querystring');
+const trim = (str, max) => ((str.length > max) ? `${str.slice(0, max - 3)}...` : str);
 module.exports.load = (bot) => {
   //test command
     commands.test = {
@@ -127,6 +131,14 @@ module.exports.load = (bot) => {
                       {
                         "name": "Russian Roulette - `Play Russian Roulette!`",
                         "value": "```rr```"
+                      },
+                      {
+                        "name": "Cat - `Sends a random cat!` :cat:",
+                        "value": "```cat```"
+                      },
+                      {
+                        "name": "Urban - `Searches The Urban Dictionary for a term and returns the result!`",
+                        "value": '```urban <"searchterm">```'
                       },
                     ]
                   };
@@ -322,6 +334,14 @@ module.exports.load = (bot) => {
                         "value": "```rr```"
                       },
                       {
+                        "name": "Cat - `Sends a random cat!` :cat:",
+                        "value": "```cat```"
+                      },
+                      {
+                        "name": "Urban - `Searches The Urban Dictionary for a term and returns the result!`",
+                        "value": '```urban <"searchterm">```'
+                      },
+                      {
                         "name": "Github - `Visit the RA1NB0T Github page!`",
                         "value": "```github```"
                       },
@@ -388,7 +408,7 @@ module.exports.load = (bot) => {
   commands.whatsnew = {
     "channel": null,
     "execute": async (message, args) => {
-      message.channel.send("**What's new?** \n * +userinfo \n * +serverinfo");
+      message.channel.send("**What's new?** \n * +userinfo \n * +serverinfo \n * +cat \n * +urban");
     },
   }
     //pings the bot
@@ -886,11 +906,12 @@ module.exports.load = (bot) => {
     "channel": null,
     "execute": async (message, args) => {
       const author = message.author
-      
+      bot.channels.get('570079926238052372').send(`**${author} has provided feedback:** ${message.content}`);
+      /*
       bot.fetchUser('105764405727260672').then((user) => {
         user.send(`**${author} has provided feedback:** ${message.content}`);
     });
-
+      */
       const embed = {
         "title": ":white_check_mark: Success!",
         "description": `${author}, your feedback is much appreciated!`,
@@ -1134,6 +1155,61 @@ module.exports.load = (bot) => {
         ]
       };
       message.channel.send({ embed });
+    },
+  }
+  //Sends a random cat
+  commands.cat = {
+    "channel": null,
+    "execute": async (message, args) => {
+        const body = await fetch('https://aws.random.cat/meow').then(response => response.json());
+        message.channel.send({
+          embed: {
+             image: {
+                url: body.file
+             },
+             color: 4507862,
+          }
+        });
+    },
+  }
+  //Searches Urban Dictionary for a term
+  commands.urban = {
+    "channel": null,
+    "execute": async (message, args) => {
+      if (!args.length) {
+        const embed = {
+          "title": ":x: Error!",
+          "description": `You need to include a search term!`,
+          "color": 12199999,
+          "footer": {}
+        };
+        message.channel.send({ embed });
+        return;
+      }
+
+      const query = querystring.stringify({ term: args.join(' ') });
+
+      const  body  = await fetch(`https://api.urbandictionary.com/v0/define?${query}`).then(response => response.json());
+
+      if (!body.list.length) {
+        const embed = {
+          "title": ":x: Error!",
+          "description": `No results found for **${args.join(' ')}**.`,
+          "color": 12199999,
+          "footer": {}
+        };
+        message.channel.send({ embed });
+        return;
+      }
+      const [answer] = body.list;
+      const embed = new Discord.RichEmbed()
+	    .setColor(4507862)
+	    .setTitle(`**${answer.word}**`)
+	    .setURL(answer.permalink)
+	    .addField('**Definition**', trim(answer.definition, 1024))
+	    .addField('**Example**', trim(answer.example, 1024))
+      .addField('**Rating**', `${answer.thumbs_up} thumbs up. ${answer.thumbs_down} thumbs down.`);
+      message.channel.send(embed);
     },
   }
 };  
