@@ -137,6 +137,14 @@ module.exports.load = (bot) => {
                         "value": "```cat```"
                       },
                       {
+                        "name": "Dog - `Sends a random dog!` :dog:",
+                        "value": "```dog```"
+                      },
+                      {
+                        "name": "Fox - `Sends a random fox!` :fox:",
+                        "value": "```fox```"
+                      },
+                      {
                         "name": "Urban - `Searches The Urban Dictionary for a term and returns the result!`",
                         "value": '```urban <"searchterm">```'
                       },
@@ -338,6 +346,14 @@ module.exports.load = (bot) => {
                         "value": "```cat```"
                       },
                       {
+                        "name": "Dog - `Sends a random dog!` :dog:",
+                        "value": "```dog```"
+                      },
+                      {
+                        "name": "Fox - `Sends a random fox!` :fox:",
+                        "value": "```fox```"
+                      },
+                      {
                         "name": "Urban - `Searches The Urban Dictionary for a term and returns the result!`",
                         "value": '```urban <"searchterm">```'
                       },
@@ -408,7 +424,7 @@ module.exports.load = (bot) => {
   commands.whatsnew = {
     "channel": null,
     "execute": async (message, args) => {
-      message.channel.send("**What's new?** \n * +userinfo \n * +serverinfo \n * +cat \n * +urban");
+      message.channel.send("**What's new?** \n * +userinfo \n * +serverinfo \n * +cat \n * +urban \n * +dog \n * +fox");
     },
   }
     //pings the bot
@@ -1170,6 +1186,42 @@ module.exports.load = (bot) => {
              color: 4507862,
           }
         });
+    },
+  }
+  //Sends a random fox
+  commands.fox = {
+    "channel": null,
+    "execute": async (message, args) => {
+        const body = await fetch('https://randomfox.ca/floof/').then(response => response.json());
+        message.channel.send({
+          embed: {
+             image: {
+                url: body.image
+             },
+             color: 4507862,
+          }
+        });
+    },
+  }
+  //Sends a random dog
+  commands.dog = {
+    "channel": null,
+    "execute": async (message, args) => {
+        const body = await fetch('https://random.dog/woof.json').then(response => response.json());
+        var tester = body
+        if(body.url.includes(".mp4")){
+          message.channel.send(body.url)
+        }
+        else {
+          message.channel.send({
+            embed: {
+               image: {
+                  url: body.url
+               },
+               color: 4507862,
+            }
+          });
+        }
     },
   }
   //Searches Urban Dictionary for a term
