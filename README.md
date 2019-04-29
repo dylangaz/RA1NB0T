@@ -29,6 +29,9 @@ Step 3 - Paste your bot's Client ID and Permissions Integer into their respectiv
 | cat        | Sends a random cat image                                   		     	       | everyone      |
 | dog        | Sends a random dog image                                      		   	       | everyone      |
 | fox        | Sends a random fox image                                   		     	       | everyone      |
+| joke       | Sends a random joke                                         		     	       | everyone      |
+| devjoke    | Sends a random programming joke                               		     	     | everyone      |
+| yesorno    | Answers a yes or no question for you                               		     | everyone      |
 | github     | Provides the link to the bot's Github repository  			        	           | everyone      |
 | update     | Provides the link to the bot's latest update video 			        	         | everyone      |
 | guilds     | Lists the total number of guilds that the bot is active in          		     | everyone      |
