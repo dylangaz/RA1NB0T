@@ -148,6 +148,18 @@ module.exports.load = (bot) => {
                         "name": "Urban - `Searches The Urban Dictionary for a term and returns the result!`",
                         "value": '```urban <"searchterm">```'
                       },
+                      {
+                        "name": "Joke - `Sends a random joke!`",
+                        "value": '```joke```'
+                      },
+                      {
+                        "name": "DevJoke - `Sends a random programming joke!`",
+                        "value": '```devjoke```'
+                      },
+                      {
+                        "name": "YesOrNo - `Decides a yes or no question for you!`",
+                        "value": '```yesorno```'
+                      },
                     ]
                   };
                   message.channel.send({ embed });
@@ -358,6 +370,18 @@ module.exports.load = (bot) => {
                         "value": '```urban <"searchterm">```'
                       },
                       {
+                        "name": "Joke - `Sends a random joke!`",
+                        "value": '```joke```'
+                      },
+                      {
+                        "name": "DevJoke - `Sends a random programming joke!`",
+                        "value": '```devjoke```'
+                      },
+                      {
+                        "name": "YesOrNo - `Decides a yes or no question for you!`",
+                        "value": '```yesorno```'
+                      },
+                      {
                         "name": "Github - `Visit the RA1NB0T Github page!`",
                         "value": "```github```"
                       },
@@ -424,7 +448,7 @@ module.exports.load = (bot) => {
   commands.whatsnew = {
     "channel": null,
     "execute": async (message, args) => {
-      message.channel.send("**What's new?** \n * +userinfo \n * +serverinfo \n * +cat \n * +urban \n * +dog \n * +fox");
+      message.channel.send("**What's new?** \n * +userinfo \n * +serverinfo \n * +cat \n * +urban \n * +dog \n * +fox \n * +joke \n * +devjoke \n * +yesorno");
     },
   }
     //pings the bot
@@ -808,7 +832,7 @@ module.exports.load = (bot) => {
         const user = message.mentions.members.first();
         const guildname = message.guild
 
-        // !!! Change the ID here if you would like to lock the command to your Discord ID. If you don't change this ID, or remove this if statement entirely, the command won't work!
+        // !!! Change the ID here if you would like to lock the command to your Discord ID. If you don't change this ID the command won't work!
         if (message.author.id !== '105764405727260672')
         {
           const embed = {
@@ -1222,6 +1246,49 @@ module.exports.load = (bot) => {
             }
           });
         }
+    },
+  }
+  //Returns a random joke
+  commands.joke = {
+    "channel": null,
+    "execute": async (message, args) => {
+        const body = await fetch(`https://official-joke-api.appspot.com/jokes/random`).then(response => response.json());
+
+        const embed = { 
+          "title": `**Joke #${body.id}**`,
+          "description": `${body.setup} \n \n *${body.punchline}*`,
+          "color": 4507862,
+        };
+        message.channel.send({ embed });
+    },
+  }
+  //Returns a random programming joke
+  commands.devjoke = {
+    "channel": null,
+    "execute": async (message, args) => {
+        const body = await fetch(`https://official-joke-api.appspot.com/jokes/programming/random`).then(response => response.json());
+        const embed = { 
+          "title": `**Joke #${body[0].id}**`,
+          "description": `${body[0].setup} \n \n *${body[0].punchline}*`,
+          "color": 4507862,
+        };
+        message.channel.send({ embed });
+    },
+  }
+  //Returns yes or no
+  commands.yesorno = {
+    "channel": null,
+    "execute": async (message, args) => {
+        const body = await fetch(`https://yesno.wtf/api`).then(response => response.json());
+        const embed = { 
+          "title": `**Yes or No**`,
+          "description": `**${body.answer}**`,
+          "image": {
+            url: body.image
+          },
+          "color": 4507862,
+        };
+        message.channel.send({ embed });
     },
   }
   //Searches Urban Dictionary for a term
