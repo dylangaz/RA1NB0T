@@ -1063,7 +1063,7 @@ module.exports.load = (bot) => {
         
         const embed = {
           "title": ":white_check_mark: Success!",
-          "description": `${author} has kicked ${user} from ${guildname} for: ${reason}!`,
+          "description": `${author} has kicked ${user} from **${guildname}** for: ${reason}!`,
           "color": 1233431,
           "footer": {}
         };

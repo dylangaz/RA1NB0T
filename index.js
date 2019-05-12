@@ -35,6 +35,11 @@ bot.on("guildCreate", guild => {
     console.log(`New guild joined: ${guild.name} (id: ${guild.id}). This guild has ${guild.memberCount} members!`);
     //bot.user.setActivity(`Active in ${client.guilds.size} servers`);
     bot.channels.get('565690931471187969').send(`New guild joined: **${guild.name}** (id: ${guild.id}). This guild has ${guild.memberCount} members!`);
+    //sends greeting/info message to 'general'
+    const channel = guild.channels.find(ch => ch.name === 'general');
+    //if channel isn't found, return
+    if(!channel) return;
+    channel.send(`Thank you for inviting me to **__${guild.name}__**! \n My command prefix is '+'. \n To get started, type +help!`);
   });
 process.on('unhandledRejection', (r, p) => console.warn('UnhandledRejection: ', r, p))
 
