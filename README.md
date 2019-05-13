@@ -39,6 +39,7 @@ Step 3 - Paste your bot's Client ID and Permissions Integer into their respectiv
 | whatsnew   | Lists new features and commands                                   		       | everyone      |
 | userinfo   | Lists information about the selected user                         		       | everyone      |
 | serverinfo | Lists information about the current guild                           		     | everyone      |
+| vote       | Sends the discordbots.org link to vote for the bot                          | everyone      |
 | kick       | kicks a user                                      			                     | Admin         |
 | mute       | mutes a user                                      			                     | Admin         |
 | unmute     | unmutes a user                                    			        	           | Admin         |
