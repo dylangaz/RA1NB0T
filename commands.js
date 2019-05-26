@@ -232,6 +232,10 @@ module.exports.load = (bot) => {
                         "name": "Serverinfo - `Lists information about the current guild.`",
                         "value": "```serverinfo```"
                       },
+                      {
+                        "name": "Vote - `Sends the discordbots.org link to vote for the bot.`",
+                        "value": "```vote```"
+                      },
                     ]
                   };
                   message.channel.send({ embed });
@@ -410,6 +414,10 @@ module.exports.load = (bot) => {
                         "value": "```serverinfo```"
                       },
                       {
+                        "name": "Vote - `Sends the discordbots.org link to vote for the bot.`",
+                        "value": "```vote```"
+                      },
+                      {
                         "name": "Kick - `Kicks a user from the guild.` **(Requires ADMINISTRATOR permission)**",
                         "value": "```kick <@user> <reason>```"
                       },
@@ -448,7 +456,7 @@ module.exports.load = (bot) => {
   commands.whatsnew = {
     "channel": null,
     "execute": async (message, args) => {
-      message.channel.send("**What's new?** \n * +userinfo \n * +serverinfo \n * +cat \n * +urban \n * +dog \n * +fox \n * +joke \n * +devjoke \n * +yesorno");
+      message.channel.send("**What's new?** \n * +userinfo \n * +serverinfo \n * +cat \n * +urban \n * +dog \n * +fox \n * +joke \n * +devjoke \n * +yesorno \n * +vote");
     },
   }
     //pings the bot
@@ -1329,6 +1337,13 @@ module.exports.load = (bot) => {
 	    .addField('**Example**', trim(answer.example, 1024))
       .addField('**Rating**', `${answer.thumbs_up} thumbs up. ${answer.thumbs_down} thumbs down.`);
       message.channel.send(embed);
+    },
+  }
+  //Returns the link to vote for RA1NB0T on discordbots.org
+  commands.vote = {
+    "channel": null,
+    "execute": async (message, args) => {
+        message.channel.send("https://discordbots.org/bot/464823337860988938/vote");
     },
   }
 };  

@@ -15,7 +15,10 @@ require(`./commands`).load(bot);
 
 bot.on('message', (message) => {
     if (message.author.id === bot.user.id) return;
-
+    if(message.channel.type == "dm" && !message.content.startsWith('+')) {
+        message.author.send("Hey! :wave:  If you would like to invite me to your guild, please type `+invite`, otherwise type `+help` for a list of commands!")
+        return;
+    }
     const prefix = "+";
     if (!message.content.startsWith(prefix)) return;
     const arguments = message.content.split(" ");
