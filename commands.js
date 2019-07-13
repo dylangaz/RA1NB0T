@@ -113,7 +113,7 @@ module.exports.load = (bot) => {
                         "value": "```ping``````pinguser <@user>```"
                       },
                       {
-                        "name": "Say - `Allows the user to make the bot swear`:smiling_imp:",
+                        "name": "Say - `Allows the user to send a message as the bot`",
                         "value": '```say <"message">```'
                       },
                       {
@@ -232,10 +232,6 @@ module.exports.load = (bot) => {
                         "name": "Serverinfo - `Lists information about the current guild.`",
                         "value": "```serverinfo```"
                       },
-                      {
-                        "name": "Vote - `Sends the discordbots.org link to vote for the bot.`",
-                        "value": "```vote```"
-                      },
                     ]
                   };
                   message.channel.send({ embed });
@@ -334,7 +330,7 @@ module.exports.load = (bot) => {
                         "value": "```ping``````pinguser <@user>```"
                       },
                       {
-                        "name": "Say - `Allows the user to make the bot swear`:smiling_imp:",
+                        "name": "Say - `Allows the user to send a message as the bot`",
                         "value": '```say <"message">```'
                       },
                       {
@@ -414,10 +410,6 @@ module.exports.load = (bot) => {
                         "value": "```serverinfo```"
                       },
                       {
-                        "name": "Vote - `Sends the discordbots.org link to vote for the bot.`",
-                        "value": "```vote```"
-                      },
-                      {
                         "name": "Kick - `Kicks a user from the guild.` **(Requires ADMINISTRATOR permission)**",
                         "value": "```kick <@user> <reason>```"
                       },
@@ -456,7 +448,7 @@ module.exports.load = (bot) => {
   commands.whatsnew = {
     "channel": null,
     "execute": async (message, args) => {
-      message.channel.send("**What's new?** \n * +userinfo \n * +serverinfo \n * +cat \n * +urban \n * +dog \n * +fox \n * +joke \n * +devjoke \n * +yesorno \n * +vote");
+      message.channel.send("**What's new in v1.3.1?** \n\n* Changes to the `+say` command. ```Users who do not have the ADMINISTRATOR permission can now no longer use `@everyone` and `@here` in their `+say` messages.``` \n* Changes to the `+whatsnew` command. ```Added the current version number to the `+whatsnew` command and changed the response format.``` \n* Changes to the `+shoot` command. ```Condensed the response messages.``` \n* Changes to the `+rr` command. ```Condensed the response messages.``` \n* Changes to the `+urban` command. ```Altered the response message to make it look better.```");
     },
   }
     //pings the bot
@@ -498,11 +490,27 @@ module.exports.load = (bot) => {
     commands.say = {
         "channel": null,
         "execute": async (message, args) => {
+          const admin = message.channel.permissionsFor(message.member).has("ADMINISTRATOR", false);
+          if(!admin)
+          {
+            if(message.content.includes(("@everyone")) || message.content.includes("@here"))
+            {
+              const embed = {
+                "title": ":x: Error!",
+                "description": "The `ADMINISTRATOR` permission is required to send a message containing `@everyone`, or `@here`.",
+                "color": 12199999,
+                "footer": {}
+              };
+              message.channel.send({ embed });
+              return;
+            }
+          }
+          
           message.channel.startTyping()
             message.delete()
             .then(msg => console.log(`Deleted message from ${msg.author.username} (${message})`))
             .catch(console.error);
-            message.channel.send(args.join(" "))
+            message.channel.send(`${message.author} says: *"${args.join(" ")}"*`)
           message.channel.stopTyping()
         },
     }
@@ -575,12 +583,10 @@ module.exports.load = (bot) => {
         while(loopActive)
         {
           n = Math.floor(Math.random() * 4);
-          console.log(n)
           if(n==0)
           {
             message.channel.send(`${message.author} takes their shot...`)
-            message.channel.send(`${message.author} couldn't handle the recoil!`)
-            message.channel.send(`${message.author}'s assassination attempt on ${user} has failed!`, {files: ["./assets/shoot/0.gif"]});
+            message.channel.send(`${message.author} couldn't handle the recoil! \n${message.author}'s assassination attempt on ${user} has failed!`, {files: ["./assets/shoot/0.gif"]});
             loopActive = false;
             break;
           }
@@ -601,8 +607,7 @@ module.exports.load = (bot) => {
           else if(n==3)
           {
             message.channel.send(`${message.author} takes their aim...`)
-            message.channel.send(`and...`)
-            message.channel.send(`${user}'s head explodes!`, {files: ["./assets/shoot/3.gif"]});
+            message.channel.send(`and... \n${user}'s head explodes!`, {files: ["./assets/shoot/3.gif"]});
             loopActive = false;
             break;
           }
@@ -622,28 +627,24 @@ module.exports.load = (bot) => {
         while(loopActive)
         {
           n = Math.floor(Math.random() * 6);
-          console.log(n)
           if(n==0)
           {
             message.channel.send(`${message.author} places the muzzle against their head...`)
-            message.channel.send(`* Click *`)
-            message.channel.send(`${message.author} Lives!`)
+            message.channel.send(`* Click * \n${message.author} Lives!`)
             loopActive = false;
             break;
           }
           else if(n==1)
           {
             message.channel.send(`${message.author} places the muzzle against their head...`)
-            message.channel.send(`* Click *`)
-            message.channel.send(`${message.author} Lives!`)
+            message.channel.send(`* Click * \n${message.author} Lives!`)
             loopActive = false;
             break;
           }
           else if(n==2)
           {
             message.channel.send(`${message.author} places the muzzle against their head...`)
-            message.channel.send(`* Click *`)
-            message.channel.send(`${message.author} Lives!`)
+            message.channel.send(`* Click * \n${message.author} Lives!`)
             loopActive = false;
             break;
           }
@@ -651,24 +652,21 @@ module.exports.load = (bot) => {
           else if(n==3)
           {
             message.channel.send(`${message.author} places the muzzle against their head...`)
-            message.channel.send(`* Click *`)
-            message.channel.send(`${message.author} Lives!`)
+            message.channel.send(`* Click * \n${message.author} Lives!`)
             loopActive = false;
             break;
           }
           else if(n==4)
           {
             message.channel.send(`${message.author} places the muzzle against their head...`)
-            message.channel.send(`* Click *`)
-            message.channel.send(`${message.author} Lives!`)
+            message.channel.send(`* Click * \n${message.author} Lives!`)
             loopActive = false;
             break;
           }
           else if(n==5)
           {
             message.channel.send(`${message.author} places the muzzle against their head...`)
-            message.channel.send(`* Gunshot *`)
-            message.channel.send(`${message.author} Dies.`)
+            message.channel.send(`* Gunshot * \n${message.author} Dies.`)
             loopActive = false;
             break;
           }
@@ -1071,7 +1069,7 @@ module.exports.load = (bot) => {
         
         const embed = {
           "title": ":white_check_mark: Success!",
-          "description": `${author} has kicked ${user} from **${guildname}** for: ${reason}!`,
+          "description": `${author} has kicked ${user} from ${guildname} for: ${reason}!`,
           "color": 1233431,
           "footer": {}
         };
@@ -1335,15 +1333,8 @@ module.exports.load = (bot) => {
 	    .setURL(answer.permalink)
 	    .addField('**Definition**', trim(answer.definition, 1024))
 	    .addField('**Example**', trim(answer.example, 1024))
-      .addField('**Rating**', `${answer.thumbs_up} thumbs up. ${answer.thumbs_down} thumbs down.`);
+      .addField('**Rating**', `:thumbsup: ${answer.thumbs_up}  \n\n:thumbsdown: ${answer.thumbs_down}`);
       message.channel.send(embed);
-    },
-  }
-  //Returns the link to vote for RA1NB0T on discordbots.org
-  commands.vote = {
-    "channel": null,
-    "execute": async (message, args) => {
-        message.channel.send("https://discordbots.org/bot/464823337860988938/vote");
     },
   }
 };  
