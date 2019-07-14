@@ -5,18 +5,22 @@ const bot = new Discord.Client();
 const config = require('./config.json');
 
 bot.on('ready' , async () => {
-    console.log(`Logged in as ${bot.user.username}`)
-    bot.user.setStatus('available')
+    console.log(`Logged in as ${bot.user.username}`);
+    bot.user.setStatus('available');
     bot.user.setPresence(config.defaultPresence);
     //bot.user.setActivity(`Active in ${client.guilds.size} servers`);
 })
 commands = {};
-require(`./commands`).load(bot);
+require(`./modules/restricted`).load(bot);
+require(`./modules/help`).load(bot);
+require(`./modules/fun`).load(bot);
+require(`./modules/utility`).load(bot);
+require(`./modules/moderation`).load(bot);
 
 bot.on('message', (message) => {
     if (message.author.id === bot.user.id) return;
     if(message.channel.type == "dm" && !message.content.startsWith('+')) {
-        message.author.send("Hey! :wave:  If you would like to invite me to your guild, please type `+invite`, otherwise type `+help` for a list of commands!")
+        message.author.send("Hey! :wave:  If you would like to invite me to your guild, please type `+invite`, otherwise type `+help` for a list of commands!");
         return;
     }
     const prefix = "+";
