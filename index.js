@@ -7,9 +7,16 @@ const config = require('./config.json');
 bot.on('ready' , async () => {
     console.log(`Logged in as ${bot.user.username}`);
     bot.user.setStatus('available');
-    bot.user.setPresence(config.defaultPresence);
-    //bot.user.setActivity(`Active in ${client.guilds.size} servers`);
-})
+    //bot.user.setPresence(config.defaultPresence);
+    bot.user.setPresence({
+        game: {
+            name: `Active in ${bot.guilds.size} servers [${config.defaultPresence.game.name}]`,
+            type: 'STREAMING',
+            url: "https://www.twitch.tv/haywirerain"
+        },
+        status: 'online'
+    })
+});
 commands = {};
 require(`./modules/restricted`).load(bot);
 require(`./modules/help`).load(bot);
@@ -33,14 +40,30 @@ bot.on('message', (message) => {
 });
 bot.on("guildDelete", guild => {
     // this event triggers when the bot is removed from a guild.
+
     console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`);
-    //bot.user.setActivity(`Active in ${client.guilds.size} servers`);
+    bot.user.setPresence({
+        game: {
+            name: `Active in ${bot.guilds.size} servers [${config.defaultPresence.game.name}]`,
+            type: 'STREAMING',
+            url: "https://www.twitch.tv/haywirerain"
+        },
+        status: 'online'
+    });
     bot.channels.get('565690931471187969').send(`I have been removed from: **${guild.name}** (id: ${guild.id}).`);
   });
 bot.on("guildCreate", guild => {
     // This event triggers when the bot joins a guild.
+
     console.log(`New guild joined: ${guild.name} (id: ${guild.id}). This guild has ${guild.memberCount} members!`);
-    //bot.user.setActivity(`Active in ${client.guilds.size} servers`);
+    bot.user.setPresence({
+        game: {
+            name: `Active in ${bot.guilds.size} servers [${config.defaultPresence.game.name}]`,
+            type: 'STREAMING',
+            url: "https://www.twitch.tv/haywirerain"
+        },
+        status: 'online'
+    });
     bot.channels.get('565690931471187969').send(`New guild joined: **${guild.name}** (id: ${guild.id}). This guild has ${guild.memberCount} members!`);
     //sends greeting/info message to 'general'
     const channel = guild.channels.find(ch => ch.name === 'general');
