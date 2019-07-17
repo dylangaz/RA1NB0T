@@ -1,8 +1,6 @@
 //Restricted Module for RA1NB0T
 const Discord = require('discord.js');
 const config = require("../config");
-const fetch = require('node-fetch');
-const querystring = require('querystring');
 const trim = (str, max) => ((str.length > max) ? `${str.slice(0, max - 3)}...` : str);
 module.exports.load = (bot) => {
   //test command
@@ -44,7 +42,7 @@ module.exports.load = (bot) => {
         
         if(arg1 == "playing")
         {
-          bot.user.setActivity(arg2, {type: "PLAYING"})
+          bot.user.setActivity(arg2, {type: "PLAYING"});
           const embed = {
             "title": ":white_check_mark: Success!",
             "description": `${author} has changed my presence to ` + "`PLAYING` " + `"**${arg2}**"!`,
@@ -55,7 +53,7 @@ module.exports.load = (bot) => {
         }
         else if(arg1 == "streaming")
         {
-          bot.user.setActivity(arg2, {type: "STREAMING", url: "https://www.twitch.tv/haywirerain"})
+          bot.user.setActivity(arg2, {type: "STREAMING", url: "https://www.twitch.tv/haywirerain"});
           const embed = {
             "title": ":white_check_mark: Success!",
             "description": `${author} has changed my presence to ` + "`STREAMING` " + `"**${arg2}**"!`,
@@ -66,7 +64,7 @@ module.exports.load = (bot) => {
         }
         else if(arg1 == "listening")
         {
-          bot.user.setActivity(arg2, {type: "LISTENING"})
+          bot.user.setActivity(arg2, {type: "LISTENING"});
           const embed = {
             "title": ":white_check_mark: Success!",
             "description": `${author} has changed my presence to ` + "`LISTENING` " + `"**${arg2}**"!`,
@@ -77,7 +75,7 @@ module.exports.load = (bot) => {
         }
         else if(arg1 == "watching")
         {
-          bot.user.setActivity(arg2, {type: "WATCHING"})
+          bot.user.setActivity(arg2, {type: "WATCHING"});
           const embed = {
             "title": ":white_check_mark: Success!",
             "description": `${author} has changed my presence to ` + "`WATCHING` " + `"**${arg2}**"!`,
@@ -88,7 +86,14 @@ module.exports.load = (bot) => {
         }
         else if(arg1 == "reset")
         {
-          bot.user.setPresence(config.defaultPresence)
+          bot.user.setPresence({
+            game: {
+                name: `Active in ${bot.guilds.size} servers [${config.defaultPresence.game.name}]`,
+                type: 'STREAMING',
+                url: "https://www.twitch.tv/haywirerain"
+            },
+            status: 'online'
+        });
           const embed = {
             "title": ":white_check_mark: Success!",
             "description": `${author} has reset my presence!`,
@@ -96,7 +101,7 @@ module.exports.load = (bot) => {
             "footer": {}
           };
           message.channel.send({ embed });
-          console.log(config.defaultPresence)
+          console.log(config.defaultPresence);
         }
         else
         {

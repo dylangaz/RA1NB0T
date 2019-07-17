@@ -15,7 +15,7 @@ bot.on('ready' , async () => {
             url: "https://www.twitch.tv/haywirerain"
         },
         status: 'online'
-    })
+    });
 });
 commands = {};
 require(`./modules/restricted`).load(bot);

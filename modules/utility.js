@@ -1,8 +1,6 @@
 //Utility Module for RA1NB0T
 const Discord = require('discord.js');
 const config = require("../config");
-const fetch = require('node-fetch');
-const querystring = require('querystring');
 const trim = (str, max) => ((str.length > max) ? `${str.slice(0, max - 3)}...` : str);
 module.exports.load = (bot) => {
     //Lists new features
