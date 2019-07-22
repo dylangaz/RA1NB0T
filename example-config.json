@@ -1,8 +1,9 @@
 {
+    "prefix": "",
     "token":"",
     "defaultPresence": {
         "game": {
-            "name": "v1.4.0",
+            "name": "v1.4.1",
             "type": "PLAYING",
             "url": ""
         }
