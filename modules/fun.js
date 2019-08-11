@@ -376,5 +376,16 @@ module.exports.load = (bot) => {
         message.channel.send(embed);
       },
     }
+    //returns random number between two numbers inclusive
+    commands.rng = {
+      "channel": null,
+      "execute": async (message, args) => {
+        args = message.content.trim().split(/ +/g);
+        let min = args[0];
+        let max = args.slice(1).join(" ");
+        n = Math.floor(Math.random() * (max - min + 1) + min);
+        message.channel.send(n)
+      },
+    }
     //End of Module
 }

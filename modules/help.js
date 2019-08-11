@@ -151,6 +151,10 @@ module.exports.load = (bot) => {
                         "name": "YesOrNo - `Decides a yes or no question for you!`",
                         "value": '```yesorno```'
                       },
+                      {
+                        "name": "RNG - `Returns a random number between num1 and num2 inclusive.`",
+                        "value": '```rng <num1> <num2>```'
+                      },
                     ]
                   };
                   message.channel.send({ embed });
@@ -361,6 +365,10 @@ module.exports.load = (bot) => {
                       {
                         "name": "YesOrNo - `Decides a yes or no question for you!`",
                         "value": '```yesorno```'
+                      },
+                      {
+                        "name": "RNG - `Returns a random number between num1 and num2 inclusive.`",
+                        "value": '```rng <num1> <num2>```'
                       },
                       {
                         "name": "Github - `Visit the RA1NB0T Github page!`",
