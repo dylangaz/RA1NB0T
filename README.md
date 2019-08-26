@@ -49,4 +49,6 @@ Step 3 - Paste your bot's Client ID and Permissions Integer into their respectiv
 To send feedback please join the [Support Guild](https://discord.gg/tgvNDWr), or use the +feedback command through RA1NB0T.
 
 # Other:
-[![Discord Bots](https://discordbots.org/api/widget/464823337860988938.svg)](https://discordbots.org/bot/464823337860988938)
+[![Discord Bots](https://discordbots.org/api/widget/464823337860988938.svg)](https://discordbots.org/bot/464823337860988938)<br /> 
+[Discord.Bots.gg](https://discord.bots.gg/bots/464823337860988938)<br /> 
+[DiscordBotList.com](https://discordbotlist.com/bots/464823337860988938)
