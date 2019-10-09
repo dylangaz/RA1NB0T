@@ -74,10 +74,10 @@ process.on('unhandledRejection', (r, p) => console.warn('UnhandledRejection: ', 
 //event listener to greet new guild members
 bot.on('guildMemberAdd', member => {
     //sends welcome message to 'general'
-    const channel = member.guild.channels.find(ch => ch.name === 'general');
+    //const channel = member.guild.channels.find(ch => ch.name === 'general');
     //if channel isn't found, return
-    if(!channel) return;
-    channel.send(`Welcome to **__${member.guild.name}__**, ${member}`);
+    //if(!channel) return;
+    //channel.send(`Welcome to **__${member.guild.name}__**, ${member}`);
 });
 
 bot.login(config.token);

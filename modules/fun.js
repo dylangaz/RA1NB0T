@@ -381,6 +381,7 @@ module.exports.load = (bot) => {
       "channel": null,
       "execute": async (message, args) => {
         args = message.content.trim().split(/ +/g);
+        const command = args.shift().toLowerCase();
         let min = args[0];
         let max = args.slice(1).join(" ");
         n = Math.floor(Math.random() * (max - min + 1) + min);

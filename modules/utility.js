@@ -7,7 +7,7 @@ module.exports.load = (bot) => {
     commands.whatsnew = {
         "channel": null,
         "execute": async (message, args) => {
-            message.channel.send("**What's new in v1.3.1?** \n\n* Changes to the `+say` command. ```Users who do not have the ADMINISTRATOR permission can now no longer use `@everyone` and `@here` in their `+say` messages.``` \n* Changes to the `+whatsnew` command. ```Added the current version number to the `+whatsnew` command and changed the response format.``` \n* Changes to the `+shoot` command. ```Condensed the response messages.``` \n* Changes to the `+rr` command. ```Condensed the response messages.``` \n* Changes to the `+urban` command. ```Altered the response message to make it look better.```");
+            message.channel.send(`${config.whatsnew}`);
         },
     }  
     //Uses Client ID and Bot Permission integer (Paste ID and perm integer in config.json)

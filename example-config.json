@@ -3,12 +3,13 @@
     "token":"",
     "defaultPresence": {
         "game": {
-            "name": "v1.4.1",
+            "name": "v0.0.0",
             "type": "PLAYING",
             "url": ""
         }
     },
     "clientID":"",
     "botPerms":"",
-    "update":""
+    "update":"",
+    "whatsnew":""
 }
