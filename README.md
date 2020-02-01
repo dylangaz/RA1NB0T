@@ -51,5 +51,5 @@ To send feedback please join the [Support Guild](https://discord.gg/tgvNDWr), or
 # Other:
 [![Discord Bots](https://discordbots.org/api/widget/464823337860988938.svg)](https://discordbots.org/bot/464823337860988938)<br /> 
 [Discord.Bots.gg](https://discord.bots.gg/bots/464823337860988938)<br /> 
-[DiscordBotList.com](https://discordbotlist.com/bots/464823337860988938)
+[DiscordBotList.com](https://discordbotlist.com/bots/464823337860988938)<br />
 [Official Website](http://rainsoftware.ml/downloads/Bots/ra1nb0t/?i=1)
