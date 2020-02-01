@@ -15,6 +15,7 @@ Step 3 - Paste your bot's Client ID and Permissions Integer into their respectiv
 | Command    | Function                                          				                   | Required Role |
 |------------|-----------------------------------------------------------------------------|---------------|
 | help       | DMs the user the command list              				                         | everyone      |
+| usage      | Returns the usage for the specified command.                                | everyone      |
 | invite     | Provides a bot invite link                 				                         | everyone      |
 | feedback   | Sends feedback to the developer           				                           | everyone      |
 | ping       | Pong!                                              	        			         | everyone      |
