@@ -54,7 +54,7 @@ bot.on("guildCreate", guild => { // This event triggers when the bot joins a gui
     const channel = guild.channels.find(ch => ch.name === 'general');
     //if channel isn't found, return
     if(!channel) return;
-    channel.send(`Thank you for inviting me to **__${guild.name}__**! \n My command prefix is '+'. \n To get started, type +help!`);
+    channel.send(`Thank you for inviting me to **__${guild.name}__**! `+"\nMy command prefix is '+'. \nTo get started, type `+help`!");
   });
 bot.on("guildDelete", guild => { // this event triggers when the bot is removed from a guild.
 

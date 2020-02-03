@@ -1,6 +1,7 @@
 //Utility Module for RA1NB0T
 const Discord = require('discord.js');
 const config = require("../config");
+const usage = require("../usage")
 const trim = (str, max) => ((str.length > max) ? `${str.slice(0, max - 3)}...` : str);
 module.exports.load = (bot) => {
     //Lists new features
@@ -228,5 +229,25 @@ module.exports.load = (bot) => {
         message.channel.send({ embed });
       },
     } 
+    //Returns discordbots vote link
+    commands.vote = {
+      "channel": null,
+      "execute": async (message, args) => {
+          message.channel.send(`https://top.gg/bot/464823337860988938/vote`);
+      },
+    }
+    //Reads Usage JSON file
+    commands.usage = {
+      "channel": null,
+      "execute": async (message, args) => {
+          args = message.content.trim().split(/ +/g);
+          const command = args.shift().toLowerCase();
+          let arg1 = args[0].toLowerCase();
+          let arg2 = args.slice(1).join(" ");
+          
+          message.channel.send(`${usage[arg1]}`);
+      },
+    }
+    
     //End of Module
 }

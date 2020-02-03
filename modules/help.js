@@ -12,7 +12,7 @@ module.exports.load = (bot) => {
               message.channel.send(`${author}, I sent the command list to your DMs! :mailbox_with_mail: `);
               const embed = {
                 "title": "__Command List__",
-                "description": "Visit the bot's page on my website [here](http://old.rainsoftware.ml/downloads/Bots/ra1nb0t/)",
+                "description": "Visit the bot's page on my website [here](http://rainsoftware.ml/downloads/Bots/ra1nb0t/?i=1)",
                 "color": 4507862,
                 "footer": {
                   "icon_url": "https://lh3.googleusercontent.com/kQmKjglSvITkgl06nuGdJb9bDMrQ7WCCguUNV6cStIXmpK3cGLrMKqbAHyxOXrYaqi2J83cni7tjI01xg7VpqIsu-676JNWywZHNZ6f62ml7bbtn8bRWqa1OQDZS_THx3yXJ8Ewz62rEnWoxd8JlYi0qjuR7GYo5pxjc-s1TUdAc6_22VDSB12aZTcbK9ViKJc0Ff_EVP2JKEHbcASMtCHABnjz2bFa4JiPBNjKPQ7eXKiP_Uvt8sTh-srbsxZQjdMPy4DlMNYB1_pfvEcyqI0uyRHwS-rPQnveqRjjqnrbST4GQXEHNFjHfESNsAGkVzVe_m2ldkStgqCgxt-svbj2syr4XEQvD8eTYdKLZKN4-c6Nj15r4EgmPpvwXL8YgPTJMIeu5MoTbWxIlEjQLHzgYG2Qvvc2bvvftCjWBLB9KqdaBzIlmsubiRDroCZwWxfB4T9j_C2GEkeG4ym6MdL8cJoW7vI9YiD1uo3WIb8fIWfYe6V7FXq10Zep9LShXq7judS0U68q1ZLx47L4oG4XeBLSYn0EsNvAx2JxSvbuytUdGUCzWv57Vz9f5AlcufA2KcbxRvcQc86Tr1uvGmhtfuaRipL0k8yfMrYrbwT2obfXuLcoXx9WTJk6cYLVJU1OcgiIQYUcJvYHKnsaGy_qbqw7bKR4=s300-no",
@@ -23,7 +23,7 @@ module.exports.load = (bot) => {
                 },
                 "author": {
                   "name": "RA1NB0T",
-                  "url": "http://old.rainsoftware.ml/downloads/Bots/ra1nb0t/",
+                  "url": "http://rainsoftware.ml/downloads/Bots/ra1nb0t/?i=1",
                   "icon_url": "https://lh3.googleusercontent.com/CpiTKMSx-or-pSgUYvyNZ1FeJ22BqJDT-MtaYr93jUOR2hGplPqrsD3o1BIUMamxlJyr9uyiwEaDzGfmR7txSGdR2uUt68-NHSS7GGZHMxjK8jLgsCD7Ew9_bvEiTM9B5MYo2Vct-h8pUAP-hrQQkTUo1P8yRJNi6yD3wkqpvxO059EzT9afrCcTUitWk65nEdrAroufQJ0p0nksLZsSjYjeVDtp_Jw7eo8CZRkOYQHTxInSfvqjhv5W61MKoBAZ2ZyylK_zMK5LaSx5HuKT92Oigd03DjC_ZGGzLn0I3A-p3e9-Kjlamf3L3Eqvf6hbHj_Mi940s-sUB69ElmrEIB1j1kNHS2fwUKWeQiN_7LOfmNkbzBQdMwm1WcMf9YBoXVjjeOnQ4kHXt_3V_Ed5tmhvkN-jUCEzj0iNKexOTM_EQ2mMec9iIs03ynF8-TcovCBz5NFQttkBuAN4jlnDvuH3Vt5Oww2CzSK-NTJO3JRXbde8RUQufX5K3GK7Sj2SfhSzV2DP4nKMiwCosfw-q0Emk__NMwB4Q6N_8hHYKgEzi-SZyBNKTGw6Px8PL9-Qa76ZOHZ8vHMfD5oSVYUBR-f_huO92cMbFTYIodNeT4oa1PUjZux6ObhQy-nMKZBPWSLcp0P1yo-rM9jI45Da8R21vS8wbue33QUrferv5tZWewtT58MaDrv6XEGrl42f3JoKJgbEUumKKV_H_SugxW13=s164-no"
                 },
                 "fields": [
@@ -40,7 +40,7 @@ module.exports.load = (bot) => {
                     "value": ":three:"
                   },
                   {
-                    "name": "Display all Commands.",
+                    "name": "Display all Commands.\n **(Currently does not display all commands, whoops :sweat_smile:\n You may want to use the individual categories to look up commands for the time being. Sorry for the inconvenience!)**",
                     "value": ":four:"
                   },
                 ]
@@ -80,7 +80,7 @@ module.exports.load = (bot) => {
                 collector.on('collect', (reaction, reactionCollector) => {
                   const embed = {
                     "title": "__Command List__ **[FUN]**",
-                    "description": "Visit the bot's page on my website [here](http://old.rainsoftware.ml/downloads/Bots/ra1nb0t/) ",
+                    "description": "Visit the bot's page on my website [here](http://rainsoftware.ml/downloads/Bots/ra1nb0t/?i=1) ",
                     "color": 4507862,
                     "footer": {
                       "icon_url": "https://lh3.googleusercontent.com/kQmKjglSvITkgl06nuGdJb9bDMrQ7WCCguUNV6cStIXmpK3cGLrMKqbAHyxOXrYaqi2J83cni7tjI01xg7VpqIsu-676JNWywZHNZ6f62ml7bbtn8bRWqa1OQDZS_THx3yXJ8Ewz62rEnWoxd8JlYi0qjuR7GYo5pxjc-s1TUdAc6_22VDSB12aZTcbK9ViKJc0Ff_EVP2JKEHbcASMtCHABnjz2bFa4JiPBNjKPQ7eXKiP_Uvt8sTh-srbsxZQjdMPy4DlMNYB1_pfvEcyqI0uyRHwS-rPQnveqRjjqnrbST4GQXEHNFjHfESNsAGkVzVe_m2ldkStgqCgxt-svbj2syr4XEQvD8eTYdKLZKN4-c6Nj15r4EgmPpvwXL8YgPTJMIeu5MoTbWxIlEjQLHzgYG2Qvvc2bvvftCjWBLB9KqdaBzIlmsubiRDroCZwWxfB4T9j_C2GEkeG4ym6MdL8cJoW7vI9YiD1uo3WIb8fIWfYe6V7FXq10Zep9LShXq7judS0U68q1ZLx47L4oG4XeBLSYn0EsNvAx2JxSvbuytUdGUCzWv57Vz9f5AlcufA2KcbxRvcQc86Tr1uvGmhtfuaRipL0k8yfMrYrbwT2obfXuLcoXx9WTJk6cYLVJU1OcgiIQYUcJvYHKnsaGy_qbqw7bKR4=s300-no",
@@ -91,7 +91,7 @@ module.exports.load = (bot) => {
                     },
                     "author": {
                       "name": "RA1NB0T",
-                      "url": "http://old.rainsoftware.ml/downloads/Bots/ra1nb0t/",
+                      "url": "http://rainsoftware.ml/downloads/Bots/ra1nb0t/?i=1",
                       "icon_url": "https://lh3.googleusercontent.com/CpiTKMSx-or-pSgUYvyNZ1FeJ22BqJDT-MtaYr93jUOR2hGplPqrsD3o1BIUMamxlJyr9uyiwEaDzGfmR7txSGdR2uUt68-NHSS7GGZHMxjK8jLgsCD7Ew9_bvEiTM9B5MYo2Vct-h8pUAP-hrQQkTUo1P8yRJNi6yD3wkqpvxO059EzT9afrCcTUitWk65nEdrAroufQJ0p0nksLZsSjYjeVDtp_Jw7eo8CZRkOYQHTxInSfvqjhv5W61MKoBAZ2ZyylK_zMK5LaSx5HuKT92Oigd03DjC_ZGGzLn0I3A-p3e9-Kjlamf3L3Eqvf6hbHj_Mi940s-sUB69ElmrEIB1j1kNHS2fwUKWeQiN_7LOfmNkbzBQdMwm1WcMf9YBoXVjjeOnQ4kHXt_3V_Ed5tmhvkN-jUCEzj0iNKexOTM_EQ2mMec9iIs03ynF8-TcovCBz5NFQttkBuAN4jlnDvuH3Vt5Oww2CzSK-NTJO3JRXbde8RUQufX5K3GK7Sj2SfhSzV2DP4nKMiwCosfw-q0Emk__NMwB4Q6N_8hHYKgEzi-SZyBNKTGw6Px8PL9-Qa76ZOHZ8vHMfD5oSVYUBR-f_huO92cMbFTYIodNeT4oa1PUjZux6ObhQy-nMKZBPWSLcp0P1yo-rM9jI45Da8R21vS8wbue33QUrferv5tZWewtT58MaDrv6XEGrl42f3JoKJgbEUumKKV_H_SugxW13=s164-no"
                     },
                     "fields": [
@@ -165,7 +165,7 @@ module.exports.load = (bot) => {
                 collector2.on('collect', (reaction2, reactionCollector) => {
                   const embed = {
                     "title": "__Command List__ **[UTILITY]**",
-                    "description": "Visit the bot's page on my website [here](http://old.rainsoftware.ml/downloads/Bots/ra1nb0t/) ",
+                    "description": "Visit the bot's page on my website [here](http://rainsoftware.ml/downloads/Bots/ra1nb0t/?i=1) ",
                     "color": 4507862,
                     "footer": {
                       "icon_url": "https://lh3.googleusercontent.com/kQmKjglSvITkgl06nuGdJb9bDMrQ7WCCguUNV6cStIXmpK3cGLrMKqbAHyxOXrYaqi2J83cni7tjI01xg7VpqIsu-676JNWywZHNZ6f62ml7bbtn8bRWqa1OQDZS_THx3yXJ8Ewz62rEnWoxd8JlYi0qjuR7GYo5pxjc-s1TUdAc6_22VDSB12aZTcbK9ViKJc0Ff_EVP2JKEHbcASMtCHABnjz2bFa4JiPBNjKPQ7eXKiP_Uvt8sTh-srbsxZQjdMPy4DlMNYB1_pfvEcyqI0uyRHwS-rPQnveqRjjqnrbST4GQXEHNFjHfESNsAGkVzVe_m2ldkStgqCgxt-svbj2syr4XEQvD8eTYdKLZKN4-c6Nj15r4EgmPpvwXL8YgPTJMIeu5MoTbWxIlEjQLHzgYG2Qvvc2bvvftCjWBLB9KqdaBzIlmsubiRDroCZwWxfB4T9j_C2GEkeG4ym6MdL8cJoW7vI9YiD1uo3WIb8fIWfYe6V7FXq10Zep9LShXq7judS0U68q1ZLx47L4oG4XeBLSYn0EsNvAx2JxSvbuytUdGUCzWv57Vz9f5AlcufA2KcbxRvcQc86Tr1uvGmhtfuaRipL0k8yfMrYrbwT2obfXuLcoXx9WTJk6cYLVJU1OcgiIQYUcJvYHKnsaGy_qbqw7bKR4=s300-no",
@@ -176,7 +176,7 @@ module.exports.load = (bot) => {
                     },
                     "author": {
                       "name": "RA1NB0T",
-                      "url": "http://old.rainsoftware.ml/downloads/Bots/ra1nb0t/",
+                      "url": "http://rainsoftware.ml/downloads/Bots/ra1nb0t/?i=1",
                       "icon_url": "https://lh3.googleusercontent.com/CpiTKMSx-or-pSgUYvyNZ1FeJ22BqJDT-MtaYr93jUOR2hGplPqrsD3o1BIUMamxlJyr9uyiwEaDzGfmR7txSGdR2uUt68-NHSS7GGZHMxjK8jLgsCD7Ew9_bvEiTM9B5MYo2Vct-h8pUAP-hrQQkTUo1P8yRJNi6yD3wkqpvxO059EzT9afrCcTUitWk65nEdrAroufQJ0p0nksLZsSjYjeVDtp_Jw7eo8CZRkOYQHTxInSfvqjhv5W61MKoBAZ2ZyylK_zMK5LaSx5HuKT92Oigd03DjC_ZGGzLn0I3A-p3e9-Kjlamf3L3Eqvf6hbHj_Mi940s-sUB69ElmrEIB1j1kNHS2fwUKWeQiN_7LOfmNkbzBQdMwm1WcMf9YBoXVjjeOnQ4kHXt_3V_Ed5tmhvkN-jUCEzj0iNKexOTM_EQ2mMec9iIs03ynF8-TcovCBz5NFQttkBuAN4jlnDvuH3Vt5Oww2CzSK-NTJO3JRXbde8RUQufX5K3GK7Sj2SfhSzV2DP4nKMiwCosfw-q0Emk__NMwB4Q6N_8hHYKgEzi-SZyBNKTGw6Px8PL9-Qa76ZOHZ8vHMfD5oSVYUBR-f_huO92cMbFTYIodNeT4oa1PUjZux6ObhQy-nMKZBPWSLcp0P1yo-rM9jI45Da8R21vS8wbue33QUrferv5tZWewtT58MaDrv6XEGrl42f3JoKJgbEUumKKV_H_SugxW13=s164-no"
                     },
                     "fields": [
@@ -224,6 +224,14 @@ module.exports.load = (bot) => {
                         "name": "Serverinfo - `Lists information about the current guild.`",
                         "value": "```serverinfo```"
                       },
+                      {
+                        "name": "Vote - `Returns discordbots vote link.`",
+                        "value": "```vote```"
+                      },
+                      {
+                        "name": "Usage - `Returns the usage for the specified command.`",
+                        "value": "```usage <command>```"
+                      },
                     ]
                   };
                   message.channel.send({ embed });
@@ -234,7 +242,7 @@ module.exports.load = (bot) => {
                 collector3.on('collect', (reaction3, reactionCollector) => {
                   const embed = {
                     "title": "__Command List__ **[MODERATION]**",
-                    "description": "Visit the bot's page on my website [here](http://old.rainsoftware.ml/downloads/Bots/ra1nb0t/) ",
+                    "description": "Visit the bot's page on my website [here](http://rainsoftware.ml/downloads/Bots/ra1nb0t/?i=1) ",
                     "color": 4507862,
                     "footer": {
                       "icon_url": "https://lh3.googleusercontent.com/kQmKjglSvITkgl06nuGdJb9bDMrQ7WCCguUNV6cStIXmpK3cGLrMKqbAHyxOXrYaqi2J83cni7tjI01xg7VpqIsu-676JNWywZHNZ6f62ml7bbtn8bRWqa1OQDZS_THx3yXJ8Ewz62rEnWoxd8JlYi0qjuR7GYo5pxjc-s1TUdAc6_22VDSB12aZTcbK9ViKJc0Ff_EVP2JKEHbcASMtCHABnjz2bFa4JiPBNjKPQ7eXKiP_Uvt8sTh-srbsxZQjdMPy4DlMNYB1_pfvEcyqI0uyRHwS-rPQnveqRjjqnrbST4GQXEHNFjHfESNsAGkVzVe_m2ldkStgqCgxt-svbj2syr4XEQvD8eTYdKLZKN4-c6Nj15r4EgmPpvwXL8YgPTJMIeu5MoTbWxIlEjQLHzgYG2Qvvc2bvvftCjWBLB9KqdaBzIlmsubiRDroCZwWxfB4T9j_C2GEkeG4ym6MdL8cJoW7vI9YiD1uo3WIb8fIWfYe6V7FXq10Zep9LShXq7judS0U68q1ZLx47L4oG4XeBLSYn0EsNvAx2JxSvbuytUdGUCzWv57Vz9f5AlcufA2KcbxRvcQc86Tr1uvGmhtfuaRipL0k8yfMrYrbwT2obfXuLcoXx9WTJk6cYLVJU1OcgiIQYUcJvYHKnsaGy_qbqw7bKR4=s300-no",
@@ -245,7 +253,7 @@ module.exports.load = (bot) => {
                     },
                     "author": {
                       "name": "RA1NB0T",
-                      "url": "http://old.rainsoftware.ml/downloads/Bots/ra1nb0t/",
+                      "url": "http://rainsoftware.ml/downloads/Bots/ra1nb0t/?i=1",
                       "icon_url": "https://lh3.googleusercontent.com/CpiTKMSx-or-pSgUYvyNZ1FeJ22BqJDT-MtaYr93jUOR2hGplPqrsD3o1BIUMamxlJyr9uyiwEaDzGfmR7txSGdR2uUt68-NHSS7GGZHMxjK8jLgsCD7Ew9_bvEiTM9B5MYo2Vct-h8pUAP-hrQQkTUo1P8yRJNi6yD3wkqpvxO059EzT9afrCcTUitWk65nEdrAroufQJ0p0nksLZsSjYjeVDtp_Jw7eo8CZRkOYQHTxInSfvqjhv5W61MKoBAZ2ZyylK_zMK5LaSx5HuKT92Oigd03DjC_ZGGzLn0I3A-p3e9-Kjlamf3L3Eqvf6hbHj_Mi940s-sUB69ElmrEIB1j1kNHS2fwUKWeQiN_7LOfmNkbzBQdMwm1WcMf9YBoXVjjeOnQ4kHXt_3V_Ed5tmhvkN-jUCEzj0iNKexOTM_EQ2mMec9iIs03ynF8-TcovCBz5NFQttkBuAN4jlnDvuH3Vt5Oww2CzSK-NTJO3JRXbde8RUQufX5K3GK7Sj2SfhSzV2DP4nKMiwCosfw-q0Emk__NMwB4Q6N_8hHYKgEzi-SZyBNKTGw6Px8PL9-Qa76ZOHZ8vHMfD5oSVYUBR-f_huO92cMbFTYIodNeT4oa1PUjZux6ObhQy-nMKZBPWSLcp0P1yo-rM9jI45Da8R21vS8wbue33QUrferv5tZWewtT58MaDrv6XEGrl42f3JoKJgbEUumKKV_H_SugxW13=s164-no"
                     },
                     "fields": [
@@ -283,7 +291,7 @@ module.exports.load = (bot) => {
                 collector4.on('collect', (reaction4, reactionCollector) => {
                   const embed = {
                     "title": "__Command List__ **[COMPLETE]**",
-                    "description": "Visit the bot's page on my website [here](http://old.rainsoftware.ml/downloads/Bots/ra1nb0t/) ",
+                    "description": "Visit the bot's page on my website [here](http://rainsoftware.ml/downloads/Bots/ra1nb0t/?i=1) ",
                     "color": 4507862,
                     "footer": {
                       "icon_url": "https://lh3.googleusercontent.com/kQmKjglSvITkgl06nuGdJb9bDMrQ7WCCguUNV6cStIXmpK3cGLrMKqbAHyxOXrYaqi2J83cni7tjI01xg7VpqIsu-676JNWywZHNZ6f62ml7bbtn8bRWqa1OQDZS_THx3yXJ8Ewz62rEnWoxd8JlYi0qjuR7GYo5pxjc-s1TUdAc6_22VDSB12aZTcbK9ViKJc0Ff_EVP2JKEHbcASMtCHABnjz2bFa4JiPBNjKPQ7eXKiP_Uvt8sTh-srbsxZQjdMPy4DlMNYB1_pfvEcyqI0uyRHwS-rPQnveqRjjqnrbST4GQXEHNFjHfESNsAGkVzVe_m2ldkStgqCgxt-svbj2syr4XEQvD8eTYdKLZKN4-c6Nj15r4EgmPpvwXL8YgPTJMIeu5MoTbWxIlEjQLHzgYG2Qvvc2bvvftCjWBLB9KqdaBzIlmsubiRDroCZwWxfB4T9j_C2GEkeG4ym6MdL8cJoW7vI9YiD1uo3WIb8fIWfYe6V7FXq10Zep9LShXq7judS0U68q1ZLx47L4oG4XeBLSYn0EsNvAx2JxSvbuytUdGUCzWv57Vz9f5AlcufA2KcbxRvcQc86Tr1uvGmhtfuaRipL0k8yfMrYrbwT2obfXuLcoXx9WTJk6cYLVJU1OcgiIQYUcJvYHKnsaGy_qbqw7bKR4=s300-no",
@@ -294,7 +302,7 @@ module.exports.load = (bot) => {
                     },
                     "author": {
                       "name": "RA1NB0T",
-                      "url": "http://old.rainsoftware.ml/downloads/Bots/ra1nb0t/",
+                      "url": "http://rainsoftware.ml/downloads/Bots/ra1nb0t/?i=1",
                       "icon_url": "https://lh3.googleusercontent.com/CpiTKMSx-or-pSgUYvyNZ1FeJ22BqJDT-MtaYr93jUOR2hGplPqrsD3o1BIUMamxlJyr9uyiwEaDzGfmR7txSGdR2uUt68-NHSS7GGZHMxjK8jLgsCD7Ew9_bvEiTM9B5MYo2Vct-h8pUAP-hrQQkTUo1P8yRJNi6yD3wkqpvxO059EzT9afrCcTUitWk65nEdrAroufQJ0p0nksLZsSjYjeVDtp_Jw7eo8CZRkOYQHTxInSfvqjhv5W61MKoBAZ2ZyylK_zMK5LaSx5HuKT92Oigd03DjC_ZGGzLn0I3A-p3e9-Kjlamf3L3Eqvf6hbHj_Mi940s-sUB69ElmrEIB1j1kNHS2fwUKWeQiN_7LOfmNkbzBQdMwm1WcMf9YBoXVjjeOnQ4kHXt_3V_Ed5tmhvkN-jUCEzj0iNKexOTM_EQ2mMec9iIs03ynF8-TcovCBz5NFQttkBuAN4jlnDvuH3Vt5Oww2CzSK-NTJO3JRXbde8RUQufX5K3GK7Sj2SfhSzV2DP4nKMiwCosfw-q0Emk__NMwB4Q6N_8hHYKgEzi-SZyBNKTGw6Px8PL9-Qa76ZOHZ8vHMfD5oSVYUBR-f_huO92cMbFTYIodNeT4oa1PUjZux6ObhQy-nMKZBPWSLcp0P1yo-rM9jI45Da8R21vS8wbue33QUrferv5tZWewtT58MaDrv6XEGrl42f3JoKJgbEUumKKV_H_SugxW13=s164-no"
                     },
                     "fields": [
@@ -397,6 +405,14 @@ module.exports.load = (bot) => {
                       {
                         "name": "Serverinfo - `Lists information about the current guild.`",
                         "value": "```serverinfo```"
+                      },
+                      {
+                        "name": "Vote - `Returns discordbots vote link.`",
+                        "value": "```vote```"
+                      },
+                      {
+                        "name": "Usage - `Returns the usage for the specified command.`",
+                        "value": "```usage <command>```"
                       },
                       {
                         "name": "Kick - `Kicks a user from the guild.` **(Requires ADMINISTRATOR permission)**",
