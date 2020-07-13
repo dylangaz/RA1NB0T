@@ -93,8 +93,6 @@ module.exports.load = (bot) => {
           "footer": {}
         };
         message.channel.send({ embed });
-
-      console.log(`User ${message.author.username} has deleted ${delCount} messages [!]`)
     },
   }
   //applies the 'muted' role to the specified user

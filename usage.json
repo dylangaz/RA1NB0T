@@ -31,5 +31,6 @@
     "unmute":"```unmute <@user>```",
     "purge":"```purge <number of messages>```",
     "setpresence":"```setpresence <PLAYING/STREAMING/LISTENING/WATCHING/RESET> <\"status\">```",
-    "usage":"```usage <command>```"
+    "usage":"```usage <command>```",
+    "quote":"```quote```"
 }

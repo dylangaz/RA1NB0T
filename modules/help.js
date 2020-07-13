@@ -39,10 +39,10 @@ module.exports.load = (bot) => {
                     "name": "Display Moderation Commands.",
                     "value": ":three:"
                   },
-                  {
+                  /*{
                     "name": "Display all Commands.\n **(Currently does not display all commands, whoops :sweat_smile:\n You may want to use the individual categories to look up commands for the time being. Sorry for the inconvenience!)**",
                     "value": ":four:"
-                  },
+                  },*/
                 ]
               };
               message.author.send({ embed })
@@ -50,7 +50,7 @@ module.exports.load = (bot) => {
                 message.react(reaction_numbers[1])
                 .then(() => message.react(reaction_numbers[2]))
                 .then(() => message.react(reaction_numbers[3]))
-                .then(() => message.react(reaction_numbers[4]))
+                //.then(() => message.react(reaction_numbers[4]))
                 .catch(() => console.error('One of the emojis failed to react.'));
     
                 const filter = (reaction, user) => {
@@ -64,10 +64,10 @@ module.exports.load = (bot) => {
                 const filter3 = (reaction3, user) => {
                   return reaction3.emoji.name === reaction_numbers[3] && user.id === author.id;
                 };
-
+                /*
                 const filter4 = (reaction4, user) => {
                   return reaction4.emoji.name === reaction_numbers[4] && user.id === author.id;
-                };
+                };*/
                 
                 const collector = message.createReactionCollector(filter, { time: 60000 });
                 
@@ -75,7 +75,7 @@ module.exports.load = (bot) => {
       
                 const collector3 = message.createReactionCollector(filter3, { time: 60000 });
                 
-                const collector4 = message.createReactionCollector(filter4, { time: 60000 });
+                //const collector4 = message.createReactionCollector(filter4, { time: 60000 });
                 //1
                 collector.on('collect', (reaction, reactionCollector) => {
                   const embed = {
@@ -154,6 +154,10 @@ module.exports.load = (bot) => {
                       {
                         "name": "RNG - `Returns a random number between num1 and num2 inclusive.`",
                         "value": '```rng <num1> <num2>```'
+                      },
+                      {
+                        "name": "quote - `Returns a random quote.`",
+                        "value": '```quote```'
                       },
                     ]
                   };
@@ -288,7 +292,7 @@ module.exports.load = (bot) => {
                 collector3.on('end', collected => {
                 });
                 //4
-                collector4.on('collect', (reaction4, reactionCollector) => {
+                /*collector4.on('collect', (reaction4, reactionCollector) => {
                   const embed = {
                     "title": "__Command List__ **[COMPLETE]**",
                     "description": "Visit the bot's page on my website [here](http://rainsoftware.ml/downloads/Bots/ra1nb0t/?i=1) ",
@@ -439,7 +443,7 @@ module.exports.load = (bot) => {
                   message.channel.send({ embed });
                 });
                 collector4.on('end', collected => {
-                });
+                });*/
               });
         },
     }

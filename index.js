@@ -4,8 +4,10 @@ const Discord = require('discord.js');
 const bot = new Discord.Client();
 const config = require('./config.json');
 const prefix = config.defaultPrefix;
+var currentDate = new Date();
+
 bot.on('ready' , async () => {
-    console.log(`Logged in as ${bot.user.username}`);
+    console.log(`Logged in as ${bot.user.username} at: ${currentDate}`);
     bot.user.setStatus('available');
     //bot.user.setPresence(config.defaultPresence);
     bot.user.setPresence({

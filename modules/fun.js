@@ -61,7 +61,6 @@ module.exports.load = (bot) => {
           
           message.channel.startTyping()
             message.delete()
-            .then(msg => console.log(`Deleted message from ${msg.author.username} (${message})`))
             .catch(console.error);
             message.channel.send(`${message.author} says: *"${args.join(" ")}"*`)
           message.channel.stopTyping()
@@ -386,6 +385,20 @@ module.exports.load = (bot) => {
         let max = args.slice(1).join(" ");
         n = Math.floor(Math.random() * (max - min + 1) + min)+1;
         message.channel.send(n)
+      },
+    }
+    //Returns a random quote
+    commands.quote = {
+      "channel": null,
+      "execute": async (message, args) => {
+          const body = await fetch(`https://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json`).then(response => response.json())
+            .catch(error => console.log(`[!!!] Quote command failed due to: ${error}`))
+          const embed = { 
+            "title": `*"${body.quoteText}"*`,
+            "description": ` \n \n - ${body.quoteAuthor}`,
+            "color": 4507862,
+          };
+          message.channel.send({ embed });
       },
     }
     //End of Module
