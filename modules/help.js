@@ -156,7 +156,7 @@ module.exports.load = (bot) => {
                         "value": '```rng <num1> <num2>```'
                       },
                       {
-                        "name": "quote - `Returns a random quote.`",
+                        "name": "Quote - `Returns a random quote.`",
                         "value": '```quote```'
                       },
                     ]
