@@ -34,6 +34,8 @@ Step 3 - Paste your bot's Client ID and Permissions Integer into their respectiv
 | devjoke    | Sends a random programming joke                               		     	     | everyone      |
 | yesorno    | Answers a yes or no question for you                               		     | everyone      |
 | quote      | Returns a random quote                                                      | everyone      |
+| compliment | Returns a random compliment                                                 | everyone      |
+| rng        | Returns a random number                                                     | everyone      |
 | github     | Provides the link to the bot's Github repository  			        	           | everyone      |
 | update     | Provides the link to the bot's latest update video 			        	         | everyone      |
 | guilds     | Lists the total number of guilds that the bot is active in          		     | everyone      |
