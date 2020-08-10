@@ -99,7 +99,7 @@ module.exports.load = (bot) => {
     commands.support = {
       "channel": null,
       "execute": async (message, args) => {
-        message.channel.send("https://discord.gg/4G3a7NB");  
+        message.channel.send(`https://discord.gg/${config.supportCode}`);  
       },
     } 
     //Sends info on the selected user
