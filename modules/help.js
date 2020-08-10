@@ -159,6 +159,10 @@ module.exports.load = (bot) => {
                         "name": "Quote - `Returns a random quote.`",
                         "value": '```quote```'
                       },
+                      {
+                        "name": "Compliment - `Returns a random compliment.`",
+                        "value": '```compliment <@user>```'
+                      },
                     ]
                   };
                   message.channel.send({ embed });

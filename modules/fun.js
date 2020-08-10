@@ -401,5 +401,18 @@ module.exports.load = (bot) => {
           message.channel.send({ embed });
       },
     }
+    //Returns a random compliment
+    commands.compliment = {
+      "channel": null,
+      "execute": async (message, args) => {
+          var user = message.mentions.users.first() || message.author
+          const body = await fetch(`https://complimentr.com/api`).then(response => response.json());
+          const embed = {
+              "title": `**Hey ${user.username}!**`,
+              "description": `${body.compliment}`
+          };
+          message.channel.send({ embed });
+      },
+    }
     //End of Module
 }

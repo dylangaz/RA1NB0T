@@ -32,5 +32,6 @@
     "purge":"```purge <number of messages>```",
     "setpresence":"```setpresence <PLAYING/STREAMING/LISTENING/WATCHING/RESET> <\"status\">```",
     "usage":"```usage <command>```",
-    "quote":"```quote```"
+    "quote":"```quote```",
+    "compliment":"```compliment <@user>```"
 }
