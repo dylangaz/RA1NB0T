@@ -1,15 +1,26 @@
 # RA1NB0T
 A multipurpose Discord Bot made with NodeJS. <br />
-If you would like to invite the bot to your guild, click [here.](https://discordapp.com/oauth2/authorize?client_id=464823337860988938&scope=bot&permissions=470285379)
+If you would like to invite RA1NB0T to your guild, click [here.](https://discordapp.com/oauth2/authorize?client_id=464823337860988938&scope=bot&permissions=470285379)
 
 # Setup:
+```bash
+$ git clone https://github.com/dylangaz/RA1NB0T.git
+$ cd RA1NB0T
+$ npm install
+$ cp example-config.json config.json
+$ #Fill out config.json as described in the next section
+$ node index.js
+```
 
-Step 1 - Rename 'example-config.json' to 'config.json'  <br /> 
-Step 2 - Paste your bot token in config.json under the token section.<br /> 
-Step 3 - Paste your bot's Client ID and Permissions Integer into their respective sections in config.<br /> 
-<br /> 
--Optional Steps-<br /> 
-* Set the bot's default presence in config.json under the game section.
+# Config Setup:
+**defaultPrefix:** The default prefix used for commands. <br/>
+**token:** Your bot's token. <br/>
+**defaultPresence:** The default presence that loads at startup, or upon using the ```+setpresence reset``` command. <br/>
+**clientID:** Your bot's Client ID. <br/>
+**botPerms:** The permissions integer value that your bot requires. <br/>
+**update:** A link to an update video. <br/>
+**whatsnew:** Changelog. <br/>
+**supportCode:** The invite code to your bot's support guild. (E.g. tgvNDWr)<br/>
 
 # Commands:
 | Command    | Function                                          				                   | Required Role |
@@ -45,8 +56,8 @@ Step 3 - Paste your bot's Client ID and Permissions Integer into their respectiv
 | serverinfo | Lists information about the current guild                           		     | everyone      |
 | vote       | Sends the discordbots.org link to vote for the bot                          | everyone      |
 | kick       | kicks a user                                      			                     | Admin         |
-| mute       | mutes a user                                      			                     | Admin         |
-| unmute     | unmutes a user                                    			        	           | Admin         |
+| mute       | mutes a user       		                                        	           | Admin         |
+| unmute     | unmutes a user                                                              | Admin         |
 | purge      | deletes a specified number of messages (Max 25)   			        	           | Admin         |
 | setpresence| Sets the bot's status                            			        	           | Bot Owner     |
 # Support:
