@@ -86,22 +86,14 @@ module.exports.load = (bot) => {
         }
         else if(arg1 == "reset")
         {
-          bot.user.setPresence({
-            game: {
-                name: `Active in ${bot.guilds.size} servers [${config.defaultPresence.game.name}]`,
-                type: 'STREAMING',
-                url: "https://www.twitch.tv/haywirerain"
-            },
-            status: 'online'
-        });
+          bot.user.setActivity(`Active in ${bot.guilds.cache.size} servers [${config.defaultPresence.game.name}]`, {type: "STREAMING", url: "https://www.twitch.tv/haywirerain"});
           const embed = {
             "title": ":white_check_mark: Success!",
-            "description": `${author} has reset my presence!`,
+            "description": `${author} has changed my presence to ` + "`STREAMING` " + `"**Active in ${bot.guilds.cache.size} servers [${config.defaultPresence.game.name}]**"!`,
             "color": 1233431,
             "footer": {}
           };
           message.channel.send({ embed });
-          console.log(config.defaultPresence);
         }
         else
         {

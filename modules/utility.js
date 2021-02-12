@@ -37,7 +37,7 @@ module.exports.load = (bot) => {
       "channel": null,
       "execute": async (message, args) => {
         const author = message.author
-        bot.channels.get('570079926238052372').send(`**${author} has provided feedback:** ${message.content}`);
+        bot.channels.cache.get('570079926238052372').send(`**${author} has provided feedback:** ${message.content}`);
         /*
         bot.fetchUser('105764405727260672').then((user) => {
           user.send(`**${author} has provided feedback:** ${message.content}`);
@@ -77,15 +77,7 @@ module.exports.load = (bot) => {
     commands.guilds = {
       "channel": null,
       "execute": async (message, args) => {
-        let msgBuilder = "";
-        message.channel.send(`I am active in ${bot.guilds.size} guilds.`);
-        if (message.author.id == '105764405727260672')
-          {
-            bot.guilds.forEach(element => {
-              msgBuilder = msgBuilder + `\n` + `-${element}`
-            });
-            message.channel.send(msgBuilder);
-          } 
+        message.channel.send(`I am active in ${bot.guilds.cache.size} guilds.`);
       },
     } 
     //Embeds the most recent bot update video in chat
@@ -99,7 +91,7 @@ module.exports.load = (bot) => {
     commands.support = {
       "channel": null,
       "execute": async (message, args) => {
-        message.channel.send(`https://discord.gg/${config.supportCode}`);  
+        message.channel.send(`https://discord.gg/${config.supportCode}`);
       },
     } 
     //Sends info on the selected user
@@ -107,7 +99,7 @@ module.exports.load = (bot) => {
       "channel": null,
       "execute": async (message, args) => {
         var user = message.mentions.users.first() || message.author
-              var member = message.guild.members.get(user.id)
+              var member = message.guild.members.cache.get(user.id)
         var vcchannel = member.voiceChannel ? member.voiceChannel.name : "No Voice Channel"
         
         const embed = {
@@ -119,7 +111,7 @@ module.exports.load = (bot) => {
             "text": "Rain#2844"
           },
           "thumbnail": {
-            "url": user.displayAvatarURL
+            "url": user.displayAvatarURL()
           },
           "author": {
             "name": "RA1NB0T",
@@ -168,12 +160,12 @@ module.exports.load = (bot) => {
       "execute": async (message, args) => {
         var server = message.guild
         var roles = []
-              server.roles.reduce((snowflake, role) => {
+              server.roles.cache.reduce((snowflake, role) => {
                   if (role.id == role.guild.id) return; // filters out @everyone
                   roles.push(role.name);
         }, []);
         var channels = []
-              server.channels.reduce((snowflake, channel) => {
+              server.channels.cache.reduce((snowflake, channel) => {
                   channels.push(channel.name);
         }, []);
         
@@ -186,7 +178,7 @@ module.exports.load = (bot) => {
             "text": "Rain#2844"
           },
           "thumbnail": {
-            "url": server.iconURL
+            "url": server.iconURL()
           },
           "author": {
             "name": "RA1NB0T",

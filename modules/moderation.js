@@ -82,7 +82,7 @@ module.exports.load = (bot) => {
       if(!delCount || delCount < 2 || delCount > 25)
       return message.reply("Please provide a number between 2 and 25 for the number of messages to delete");
 
-      const fetched = await message.channel.fetchMessages({limit: (delCount +1)});
+      const fetched = await message.channel.messages.fetch({limit: (delCount +1)});
       message.channel.bulkDelete(fetched)
         .catch(error => message.reply(`Couldn't delete messages because of: ${error}`));
 
@@ -100,7 +100,7 @@ module.exports.load = (bot) => {
     "channel": null,
     "execute": async (message, args) => {
       const admin = message.channel.permissionsFor(message.member).has("ADMINISTRATOR", false);
-      const role = message.guild.roles.find(r => r.name === "Muted"); //you must have a role called 'Muted' on your discord guild
+      const role = message.guild.roles.cache.find(r => r.name === "Muted"); //you must have a role called 'Muted' on your discord guild
       const author = message.author
       const user = message.mentions.members.first();
       const guildname = message.guild
@@ -117,9 +117,9 @@ module.exports.load = (bot) => {
         return;
       } 
 
-      user.addRole(role).catch(console.error);
+      user.roles.add(role).catch(console.error);
       
-      if(!message.guild.roles.find(role => role.name === "Muted"))
+      if(!message.guild.roles.cache.find(role => role.name === "Muted"))
       {
         const embed = {
           "title": ":x: Error!",
@@ -129,7 +129,7 @@ module.exports.load = (bot) => {
         };
         message.channel.send({ embed });
       }
-      else if(user.roles.find(r => r.name === "Muted"))
+      else if(user.roles.cache.find(r => r.name === "Muted"))
       {
         const embed = {
           "title": ":x: Error!",
@@ -156,7 +156,7 @@ module.exports.load = (bot) => {
     "channel": null,
     "execute": async (message, args) => {
       const admin = message.channel.permissionsFor(message.member).has("ADMINISTRATOR", false);
-      const role = message.guild.roles.find(r => r.name === "Muted"); //you must have a role called 'Muted' on your discord guild
+      const role = message.guild.roles.cache.find(r => r.name === "Muted"); //you must have a role called 'Muted' on your discord guild
       const author = message.author
       const user = message.mentions.members.first();
       const guildname = message.guild
@@ -172,9 +172,9 @@ module.exports.load = (bot) => {
         message.channel.send({ embed });
         return;
       } 
-      user.removeRole(role).catch(console.error);
+      user.roles.remove(role).catch(console.error);
       
-      if(!message.guild.roles.find(role => role.name === "Muted"))
+      if(!message.guild.roles.cache.find(role => role.name === "Muted"))
       {
         const embed = {
           "title": ":x: Error!",
@@ -184,7 +184,7 @@ module.exports.load = (bot) => {
         };
         message.channel.send({ embed });
       }
-      else if(!user.roles.find(r => r.name === "Muted"))
+      else if(!user.roles.cache.find(r => r.name === "Muted"))
       {
         const embed = {
           "title": ":x: Error!",

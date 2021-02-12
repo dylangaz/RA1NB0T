@@ -365,7 +365,7 @@ module.exports.load = (bot) => {
           return;
         }
         const [answer] = body.list;
-        const embed = new Discord.RichEmbed()
+        const embed = new Discord.MessageEmbed()
           .setColor(4507862)
           .setTitle(`**${answer.word}**`)
           .setURL(answer.permalink)
@@ -409,7 +409,8 @@ module.exports.load = (bot) => {
           const body = await fetch(`https://complimentr.com/api`).then(response => response.json());
           const embed = {
               "title": `**Hey ${user.username}!**`,
-              "description": `${body.compliment}`
+              "description": `${body.compliment}`,
+              "color": 4507862,
           };
           message.channel.send({ embed });
       },
